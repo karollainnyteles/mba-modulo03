@@ -1,0 +1,55 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.13.35919.96
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{02EA681E-C7D8-13C7-8484-4AC65E1B71E8}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "WebApps", "WebApps", "{B17C2944-B379-45DA-AF5D-B20D53DF72C0}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Catalogo", "Catalogo", "{2C47FF0C-83B7-48DB-BB6D-4CFD0ED5E34A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TelesEducacao.Catalogo.Domain", "src\TelesEducacao.Catalogo.Domain\TelesEducacao.Catalogo.Domain.csproj", "{4027AA43-7F33-4603-875C-98AA69D7ADC8}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{EF11639C-E334-4721-BC7B-12205830A03E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TelesEducacao.Core", "src\TelesEducacao.Core\TelesEducacao.Core.csproj", "{1611C687-AEDC-4C2B-B13B-E09724F2E14D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{7AECFE51-A6F8-4C3D-9114-A4BE7FBCC7DF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TelesEducacao.Catalogo.Domain.Tests", "tests\TelesEducacao.Catalogo.Domain.Tests\TelesEducacao.Catalogo.Domain.Tests.csproj", "{9B5C3067-0F4F-4D51-B2EE-C66E7D5568B8}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4027AA43-7F33-4603-875C-98AA69D7ADC8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4027AA43-7F33-4603-875C-98AA69D7ADC8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4027AA43-7F33-4603-875C-98AA69D7ADC8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4027AA43-7F33-4603-875C-98AA69D7ADC8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1611C687-AEDC-4C2B-B13B-E09724F2E14D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1611C687-AEDC-4C2B-B13B-E09724F2E14D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1611C687-AEDC-4C2B-B13B-E09724F2E14D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1611C687-AEDC-4C2B-B13B-E09724F2E14D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9B5C3067-0F4F-4D51-B2EE-C66E7D5568B8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9B5C3067-0F4F-4D51-B2EE-C66E7D5568B8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9B5C3067-0F4F-4D51-B2EE-C66E7D5568B8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9B5C3067-0F4F-4D51-B2EE-C66E7D5568B8}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{2C47FF0C-83B7-48DB-BB6D-4CFD0ED5E34A} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
+		{4027AA43-7F33-4603-875C-98AA69D7ADC8} = {2C47FF0C-83B7-48DB-BB6D-4CFD0ED5E34A}
+		{EF11639C-E334-4721-BC7B-12205830A03E} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
+		{1611C687-AEDC-4C2B-B13B-E09724F2E14D} = {EF11639C-E334-4721-BC7B-12205830A03E}
+		{7AECFE51-A6F8-4C3D-9114-A4BE7FBCC7DF} = {2C47FF0C-83B7-48DB-BB6D-4CFD0ED5E34A}
+		{9B5C3067-0F4F-4D51-B2EE-C66E7D5568B8} = {7AECFE51-A6F8-4C3D-9114-A4BE7FBCC7DF}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {FA81EC5F-F50E-4AE4-AC09-5F4ABAD77FEC}
+	EndGlobalSection
+EndGlobal
