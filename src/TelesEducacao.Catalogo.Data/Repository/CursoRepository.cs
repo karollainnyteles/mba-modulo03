@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using TelesEducacao.Catalogo.Domain;
+using TelesEducacao.Core.Data;
 
 namespace TelesEducacao.Catalogo.Data.Repository;
 
@@ -12,6 +13,8 @@ public class CursoRepository : ICursoRepository
         _context = context;
     }
 
+    public IUnitOfWork UnitOfWork => _context;
+
     public async Task<Curso> ObterPorId(Guid id)
     {
         return await _context.Cursos.AsNoTracking().FirstOrDefaultAsync(p => p.Id == id);
@@ -22,22 +25,36 @@ public class CursoRepository : ICursoRepository
         return await _context.Cursos.AsNoTracking().ToListAsync();
     }
 
-    public async Task Adicionar(Curso curso)
+    public async Task<IEnumerable<Aula>> ObterAulas(Guid cursoId)
+    {
+        return await _context.Aulas.AsNoTracking()
+            .Where(a => a.CursoId == cursoId)
+            .ToListAsync();
+    }
+
+    public async Task<Aula> ObterAula(Guid aulaId)
+    {
+        return await _context.Aulas.AsNoTracking().FirstOrDefaultAsync(p => p.Id == aulaId);
+    }
+
+    public void Adicionar(Curso curso)
     {
         _context.Cursos.Add(curso);
-        await _context.SaveChangesAsync();
     }
 
-    public async Task Atualizar(Curso curso)
+    public void Atualizar(Curso curso)
     {
         _context.Cursos.Update(curso);
-        await _context.SaveChangesAsync();
     }
 
-    public async Task Remover(Curso curso)
+    public void Remover(Curso curso)
     {
         _context.Cursos.Remove(curso);
-        await _context.SaveChangesAsync();
+    }
+
+    public void AdicionarAula(Aula aula)
+    {
+        _context.Aulas.Add(aula);
     }
 
     public void Dispose()

@@ -24,8 +24,8 @@ public class CatalogoContext : DbContext, IUnitOfWork
         modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
     }
 
-    public Task<bool> Commit()
+    public async Task<bool> Commit()
     {
-        throw new NotImplementedException();
+        return await base.SaveChangesAsync() > 0;
     }
 }

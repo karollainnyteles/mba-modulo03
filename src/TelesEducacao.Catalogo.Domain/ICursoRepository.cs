@@ -8,9 +8,15 @@ public interface ICursoRepository : IRepository<Curso>
 
     Task<IEnumerable<Curso>> ObterTodos();
 
-    Task Adicionar(Curso curso);
+    Task<IEnumerable<Aula>> ObterAulas(Guid cursoId);
 
-    Task Atualizar(Curso curso);
+    Task<Aula> ObterAula(Guid aulaId);
 
-    Task Remover(Curso curso);
+    void Adicionar(Curso curso);
+
+    void Atualizar(Curso curso);
+
+    void Remover(Curso curso);
+
+    void AdicionarAula(Aula aula);
 }

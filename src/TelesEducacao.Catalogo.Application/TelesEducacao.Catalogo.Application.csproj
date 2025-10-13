@@ -7,15 +7,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\TelesEducacao.Core\TelesEducacao.Core.csproj" />
+    <ProjectReference Include="..\TelesEducacao.Catalogo.Data\TelesEducacao.Catalogo.Data.csproj" />
+    <ProjectReference Include="..\TelesEducacao.Catalogo.Domain\TelesEducacao.Catalogo.Domain.csproj" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Events\" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <PackageReference Include="mediatr" Version="13.0.0" />
+    <PackageReference Include="automapper" Version="15.0.1" />
   </ItemGroup>
 
 </Project>

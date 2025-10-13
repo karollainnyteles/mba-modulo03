@@ -55,6 +55,18 @@ namespace TelesEducacao.Catalogo.Domain
             Validacoes.ValidarSeVazio(Imagem, "O campo Imagem do curso não pode estar vazio");
         }
 
+        public void AdicionarCargaHoraria(TimeSpan duracao)
+        {
+            Validacoes.ValidarSeMenorQue(duracao, TimeSpan.Zero, "A duração não pode ser negativa");
+            CargaHoraria += duracao;
+        }
+
+        public void DebitaCargaHoraria(TimeSpan duracao)
+        {
+            Validacoes.ValidarSeMenorQue(duracao, TimeSpan.Zero, "A duração não pode ser negativa");
+            CargaHoraria -= duracao;
+        }
+
         public void Validar()
         {
             Validacoes.ValidarSeVazio(Nome, "O campo Nome do curso não pode estar vazio");
