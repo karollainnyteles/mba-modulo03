@@ -14,6 +14,9 @@ namespace TelesEducacao.Catalogo.Domain
         public ConteudoProgramatico ConteudoProgramatico { get; private set; }
         public List<Aula> Aulas { get; private set; } = new();
 
+        protected Curso()
+        { }
+
         public Curso(string nome, string descricao, bool ativo, decimal valor, string imagem, ConteudoProgramatico conteudoProgramatico)
         {
             Nome = nome;
