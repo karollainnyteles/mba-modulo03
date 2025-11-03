@@ -1,8 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using TelesEducacao.Catalogo.Domain;
+using TelesEducacao.Conteudos.Domain;
 using TelesEducacao.Core.Data;
 
-namespace TelesEducacao.Catalogo.Data.Repository;
+namespace TelesEducacao.Conteudos.Data.Repository;
 
 public class CursoRepository : ICursoRepository
 {

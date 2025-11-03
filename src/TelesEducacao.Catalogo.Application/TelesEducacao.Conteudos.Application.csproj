@@ -7,8 +7,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\TelesEducacao.Catalogo.Data\TelesEducacao.Catalogo.Data.csproj" />
-    <ProjectReference Include="..\TelesEducacao.Catalogo.Domain\TelesEducacao.Catalogo.Domain.csproj" />
+    <ProjectReference Include="..\TelesEducacao.Catalogo.Data\TelesEducacao.Conteudos.Data.csproj" />
+    <ProjectReference Include="..\TelesEducacao.Catalogo.Domain\TelesEducacao.Conteudos.Domain.csproj" />
   </ItemGroup>
 
   <ItemGroup>

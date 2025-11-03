@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace TelesEducacao.Catalogo.Application.Dtos;
+namespace TelesEducacao.Conteudos.Application.Dtos;
 
 public class AulaDto
 {

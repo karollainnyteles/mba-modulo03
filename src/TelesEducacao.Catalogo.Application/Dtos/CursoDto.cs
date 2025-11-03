@@ -1,7 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using TelesEducacao.Catalogo.Domain;
 
-namespace TelesEducacao.Catalogo.Application.Dtos;
+namespace TelesEducacao.Conteudos.Application.Dtos;
 
 public class CursoDto
 {

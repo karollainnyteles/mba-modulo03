@@ -1,8 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using TelesEducacao.Catalogo.Domain;
+using TelesEducacao.Conteudos.Domain;
 
-namespace TelesEducacao.Catalogo.Data.Mappings;
+namespace TelesEducacao.Conteudos.Data.Mappings;
 
 public class AulaMapping : IEntityTypeConfiguration<Aula>
 {

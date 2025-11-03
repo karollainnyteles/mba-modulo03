@@ -1,6 +1,6 @@
-﻿using TelesEducacao.Catalogo.Application.Dtos;
+﻿using TelesEducacao.Conteudos.Application.Dtos;
 
-namespace TelesEducacao.Catalogo.Application.Services;
+namespace TelesEducacao.Conteudos.Application.Services;
 
 public interface ICursoAppService : IDisposable
 {

@@ -1,8 +1,8 @@
 ﻿using AutoMapper;
-using TelesEducacao.Catalogo.Application.Dtos;
-using TelesEducacao.Catalogo.Domain;
+using TelesEducacao.Conteudos.Application.Dtos;
+using TelesEducacao.Conteudos.Domain;
 
-namespace TelesEducacao.Catalogo.Application.AutoMapper;
+namespace TelesEducacao.Conteudos.Application.AutoMapper;
 
 public class DtoToDomainMappingProfile : Profile
 {

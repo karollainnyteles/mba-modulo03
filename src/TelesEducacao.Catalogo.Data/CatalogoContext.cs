@@ -1,9 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System.Reflection;
-using TelesEducacao.Catalogo.Domain;
+using TelesEducacao.Conteudos.Domain;
 using TelesEducacao.Core.Data;
 
-namespace TelesEducacao.Catalogo.Data;
+namespace TelesEducacao.Conteudos.Data;
 
 public class CatalogoContext : DbContext, IUnitOfWork
 {

@@ -1,6 +1,6 @@
 ﻿using TelesEducacao.Core.DomainObjects;
 
-namespace TelesEducacao.Catalogo.Domain.Tests
+namespace TelesEducacao.Conteudos.Domain.Tests
 {
     public class CursoTests
     {

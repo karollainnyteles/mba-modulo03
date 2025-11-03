@@ -7,9 +7,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{02
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "WebApps", "WebApps", "{B17C2944-B379-45DA-AF5D-B20D53DF72C0}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Catalogo", "Catalogo", "{2C47FF0C-83B7-48DB-BB6D-4CFD0ED5E34A}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Conteudos", "Conteudos", "{2C47FF0C-83B7-48DB-BB6D-4CFD0ED5E34A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TelesEducacao.Catalogo.Domain", "src\TelesEducacao.Catalogo.Domain\TelesEducacao.Catalogo.Domain.csproj", "{4027AA43-7F33-4603-875C-98AA69D7ADC8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TelesEducacao.Conteudos.Domain", "src\TelesEducacao.Catalogo.Domain\TelesEducacao.Conteudos.Domain.csproj", "{4027AA43-7F33-4603-875C-98AA69D7ADC8}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{EF11639C-E334-4721-BC7B-12205830A03E}"
 EndProject
@@ -17,11 +17,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TelesEducacao.Core", "src\T
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{7AECFE51-A6F8-4C3D-9114-A4BE7FBCC7DF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TelesEducacao.Catalogo.Domain.Tests", "tests\TelesEducacao.Catalogo.Domain.Tests\TelesEducacao.Catalogo.Domain.Tests.csproj", "{9B5C3067-0F4F-4D51-B2EE-C66E7D5568B8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TelesEducacao.Conteudos.Domain.Tests", "tests\TelesEducacao.Catalogo.Domain.Tests\TelesEducacao.Conteudos.Domain.Tests.csproj", "{9B5C3067-0F4F-4D51-B2EE-C66E7D5568B8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TelesEducacao.Catalogo.Data", "src\TelesEducacao.Catalogo.Data\TelesEducacao.Catalogo.Data.csproj", "{BF686D96-C4B9-44A7-8C06-0E765111A585}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TelesEducacao.Conteudos.Data", "src\TelesEducacao.Catalogo.Data\TelesEducacao.Conteudos.Data.csproj", "{BF686D96-C4B9-44A7-8C06-0E765111A585}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TelesEducacao.Catalogo.Application", "src\TelesEducacao.Catalogo.Application\TelesEducacao.Catalogo.Application.csproj", "{2D73CF1A-54EF-496E-9EF1-CC53C207937F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TelesEducacao.Conteudos.Application", "src\TelesEducacao.Catalogo.Application\TelesEducacao.Conteudos.Application.csproj", "{2D73CF1A-54EF-496E-9EF1-CC53C207937F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TelesEducacao.WebApp.API", "src\TelesEducacao.WebApp.API\TelesEducacao.WebApp.API.csproj", "{9443EBDB-002F-4845-A659-44D4BF9A22CF}"
 EndProject

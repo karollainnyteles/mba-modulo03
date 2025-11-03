@@ -1,8 +1,8 @@
 using Microsoft.EntityFrameworkCore;
 using System.Reflection;
-using TelesEducacao.Catalogo.Application.AutoMapper;
-using TelesEducacao.Catalogo.Data;
-using TelesEducacao.WebApp.API.Setup;
+using TelesEducacao.Conteudos.Application.AutoMapper;
+using TelesEducacao.Conteudos.Data;
+using TelesEducacao.WebApp.API.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
 

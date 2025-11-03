@@ -1,6 +1,6 @@
 ﻿using TelesEducacao.Core.DomainObjects;
 
-namespace TelesEducacao.Catalogo.Domain;
+namespace TelesEducacao.Conteudos.Domain;
 
 public class ConteudoProgramatico
 {

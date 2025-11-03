@@ -1,6 +1,6 @@
 ﻿using TelesEducacao.Core.Data;
 
-namespace TelesEducacao.Catalogo.Domain;
+namespace TelesEducacao.Conteudos.Domain;
 
 public interface ICursoRepository : IRepository<Curso>
 {

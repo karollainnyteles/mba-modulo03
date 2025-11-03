@@ -1,10 +1,10 @@
-﻿using TelesEducacao.Catalogo.Application.Services;
-using TelesEducacao.Catalogo.Data;
-using TelesEducacao.Catalogo.Data.Repository;
-using TelesEducacao.Catalogo.Domain;
+﻿using TelesEducacao.Conteudos.Application.Services;
+using TelesEducacao.Conteudos.Data;
+using TelesEducacao.Conteudos.Data.Repository;
+using TelesEducacao.Conteudos.Domain;
 using TelesEducacao.Core.Bus;
 
-namespace TelesEducacao.WebApp.API.Setup;
+namespace TelesEducacao.WebApp.API.Extensions;
 
 public static class DependencyInjection
 {

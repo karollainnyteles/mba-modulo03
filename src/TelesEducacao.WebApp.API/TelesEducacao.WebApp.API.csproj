@@ -17,10 +17,14 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\TelesEducacao.Catalogo.Application\TelesEducacao.Catalogo.Application.csproj" />
-    <ProjectReference Include="..\TelesEducacao.Catalogo.Data\TelesEducacao.Catalogo.Data.csproj" />
-    <ProjectReference Include="..\TelesEducacao.Catalogo.Domain\TelesEducacao.Catalogo.Domain.csproj" />
+    <ProjectReference Include="..\TelesEducacao.Catalogo.Application\TelesEducacao.Conteudos.Application.csproj" />
+    <ProjectReference Include="..\TelesEducacao.Catalogo.Data\TelesEducacao.Conteudos.Data.csproj" />
+    <ProjectReference Include="..\TelesEducacao.Catalogo.Domain\TelesEducacao.Conteudos.Domain.csproj" />
     <ProjectReference Include="..\TelesEducacao.Core\TelesEducacao.Core.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Controllers\" />
   </ItemGroup>
 
 </Project>
