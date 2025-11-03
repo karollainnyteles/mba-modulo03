@@ -14,6 +14,7 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+    <PackageReference Include="Swashbuckle.AspNetCore.SwaggerUI" Version="9.0.6" />
   </ItemGroup>
 
   <ItemGroup>
@@ -21,10 +22,6 @@
     <ProjectReference Include="..\TelesEducacao.Catalogo.Data\TelesEducacao.Conteudos.Data.csproj" />
     <ProjectReference Include="..\TelesEducacao.Catalogo.Domain\TelesEducacao.Conteudos.Domain.csproj" />
     <ProjectReference Include="..\TelesEducacao.Core\TelesEducacao.Core.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Controllers\" />
   </ItemGroup>
 
 </Project>

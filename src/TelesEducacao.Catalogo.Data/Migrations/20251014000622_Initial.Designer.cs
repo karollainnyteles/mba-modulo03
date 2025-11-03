@@ -11,7 +11,7 @@ using TelesEducacao.Conteudos.Data;
 
 namespace TelesEducacao.Catalogo.Data.Migrations
 {
-    [DbContext(typeof(CatalogoContext))]
+    [DbContext(typeof(ConteudosContext))]
     [Migration("20251014000622_Initial")]
     partial class Initial
     {

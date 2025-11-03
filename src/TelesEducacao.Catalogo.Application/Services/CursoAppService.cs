@@ -8,11 +8,13 @@ public class CursoAppService : ICursoAppService
 {
     private readonly ICursoRepository _cursoRepository;
     private readonly IMapper _mapper;
+    private readonly ICargaHorariaService _cargaHorariaService;
 
-    public CursoAppService(ICursoRepository cursoRepository, IMapper mapper)
+    public CursoAppService(ICursoRepository cursoRepository, IMapper mapper, ICargaHorariaService cargaHorariaService)
     {
         _cursoRepository = cursoRepository;
         _mapper = mapper;
+        _cargaHorariaService = cargaHorariaService;
     }
 
     public async Task<IEnumerable<CursoDto>> ObterTodos()
@@ -35,42 +37,43 @@ public class CursoAppService : ICursoAppService
         return _mapper.Map<AulaDto>(await _cursoRepository.ObterAula(aulaId));
     }
 
-    public Task Adicionar(CursoDto cursoDto)
+    public async Task<Guid?> Adicionar(CursoDto cursoDto)
     {
         var curso = _mapper.Map<Curso>(cursoDto);
         _cursoRepository.Adicionar(curso);
 
-        return _cursoRepository.UnitOfWork.Commit();
+        await _cursoRepository.UnitOfWork.Commit();
+
+        return curso.Id;
     }
 
-    public Task Atualizar(CursoDto cursoDto)
+    public async Task Atualizar(CursoDto cursoDto)
     {
         var curso = _mapper.Map<Curso>(cursoDto);
         _cursoRepository.Atualizar(curso);
 
-        return _cursoRepository.UnitOfWork.Commit();
+        await _cursoRepository.UnitOfWork.Commit();
     }
 
-    public async Task<Task<bool>> Remover(Guid id)
+    public async Task<bool> Remover(Guid id)
     {
         var curso = await _cursoRepository.ObterPorId(id);
         _cursoRepository.Remover(curso);
-        return _cursoRepository.UnitOfWork.Commit();
+
+        return await _cursoRepository.UnitOfWork.Commit();
     }
 
-    public Task AdicionarAula(AulaDto aulaDto)
+    public async Task AdicionarAula(AulaDto aulaDto)
     {
         var aula = _mapper.Map<Aula>(aulaDto);
         _cursoRepository.AdicionarAula(aula);
-        return _cursoRepository.UnitOfWork.Commit();
+        await _cursoRepository.UnitOfWork.Commit();
     }
 
-    public async Task<Task<bool>> RemoverAula(Guid id)
+    public async Task<bool> RemoverAula(Guid aulaId)
     {
-        var aula = await _cursoRepository.ObterAula(id);
-        //TODO: Implementar remoção de aula
-        //_cursoRepository.RemoverAula(aula);
-        return _cursoRepository.UnitOfWork.Commit();
+        await _cursoRepository.RemoverAula(aulaId);
+        return await _cursoRepository.UnitOfWork.Commit();
     }
 
     public void Dispose()

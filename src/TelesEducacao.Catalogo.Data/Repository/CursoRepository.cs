@@ -6,9 +6,9 @@ namespace TelesEducacao.Conteudos.Data.Repository;
 
 public class CursoRepository : ICursoRepository
 {
-    private readonly CatalogoContext _context;
+    private readonly ConteudosContext _context;
 
-    public CursoRepository(CatalogoContext context)
+    public CursoRepository(ConteudosContext context)
     {
         _context = context;
     }
@@ -55,6 +55,14 @@ public class CursoRepository : ICursoRepository
     public void AdicionarAula(Aula aula)
     {
         _context.Aulas.Add(aula);
+    }
+
+    public async Task RemoverAula(Guid aulaId)
+    {
+        var aula = await _context.Aulas
+            .FirstOrDefaultAsync(a => a.Id == aulaId);
+
+        _context.Aulas.Remove(aula);
     }
 
     public void Dispose()

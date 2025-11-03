@@ -10,7 +10,7 @@ using TelesEducacao.Conteudos.Data;
 
 namespace TelesEducacao.Catalogo.Data.Migrations
 {
-    [DbContext(typeof(CatalogoContext))]
+    [DbContext(typeof(ConteudosContext))]
     partial class CatalogoContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)

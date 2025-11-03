@@ -5,9 +5,9 @@ using TelesEducacao.Core.Data;
 
 namespace TelesEducacao.Conteudos.Data;
 
-public class CatalogoContext : DbContext, IUnitOfWork
+public class ConteudosContext : DbContext, IUnitOfWork
 {
-    public CatalogoContext(DbContextOptions<CatalogoContext> options) : base(options)
+    public ConteudosContext(DbContextOptions<ConteudosContext> options) : base(options)
     {
     }
 

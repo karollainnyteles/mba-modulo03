@@ -19,4 +19,6 @@ public interface ICursoRepository : IRepository<Curso>
     void Remover(Curso curso);
 
     void AdicionarAula(Aula aula);
+
+    Task RemoverAula(Guid aulaId);
 }

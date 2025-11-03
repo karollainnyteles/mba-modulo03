@@ -19,9 +19,6 @@ public class CursoDto
     public decimal Valor { get; set; }
 
     [Required(ErrorMessage = "O campo {0} é obrigatório")]
-    public string Imagem { get; set; }
-
-    [Required(ErrorMessage = "O campo {0} é obrigatório")]
     public TimeSpan CargaHoraria { get; set; }
 
     public ConteudoProgramaticoDto ConteudoProgramatico { get; set; }

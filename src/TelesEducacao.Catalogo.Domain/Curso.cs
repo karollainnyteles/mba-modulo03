@@ -8,7 +8,6 @@ namespace TelesEducacao.Conteudos.Domain
         public string Descricao { get; private set; }
         public bool Ativo { get; private set; }
         public decimal Valor { get; private set; }
-        public string Imagem { get; private set; }
         public TimeSpan CargaHoraria { get; set; }
 
         public ConteudoProgramatico ConteudoProgramatico { get; private set; }
@@ -17,13 +16,12 @@ namespace TelesEducacao.Conteudos.Domain
         protected Curso()
         { }
 
-        public Curso(string nome, string descricao, bool ativo, decimal valor, string imagem, ConteudoProgramatico conteudoProgramatico)
+        public Curso(string nome, string descricao, bool ativo, decimal valor, ConteudoProgramatico conteudoProgramatico)
         {
             Nome = nome;
             Descricao = descricao;
             Ativo = ativo;
             Valor = valor;
-            Imagem = imagem;
             ConteudoProgramatico = conteudoProgramatico;
 
             Validar();
@@ -52,12 +50,6 @@ namespace TelesEducacao.Conteudos.Domain
             Validacoes.ValidarSeMenorQue(Valor, 1, "O campo Valor do curso não pode se menor igual a 0");
         }
 
-        public void AlterarImagem(string imagem)
-        {
-            Imagem = imagem;
-            Validacoes.ValidarSeVazio(Imagem, "O campo Imagem do curso não pode estar vazio");
-        }
-
         public void AdicionarCargaHoraria(TimeSpan duracao)
         {
             Validacoes.ValidarSeMenorQue(duracao, TimeSpan.Zero, "A duração não pode ser negativa");
@@ -75,7 +67,6 @@ namespace TelesEducacao.Conteudos.Domain
             Validacoes.ValidarSeVazio(Nome, "O campo Nome do curso não pode estar vazio");
             Validacoes.ValidarSeVazio(Descricao, "O campo Descricao do curso não pode estar vazio");
             Validacoes.ValidarSeMenorQue(Valor, 1, "O campo Valor do curso não pode se menor igual a 0");
-            Validacoes.ValidarSeVazio(Imagem, "O campo Imagem do curso não pode estar vazio");
         }
     }
 }

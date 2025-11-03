@@ -13,11 +13,11 @@ public static class DependencyInjection
         // Domain Bus (Mediator)
         services.AddScoped<IMediatrHandler, MediatrHandler>();
 
-        // Catalogo
+        // Conteudos
         services.AddScoped<ICursoRepository, CursoRepository>();
         services.AddScoped<ICursoAppService, CursoAppService>();
         services.AddScoped<ICargaHorariaService, CargaHorariaService>();
-        services.AddScoped<CatalogoContext>();
+        services.AddScoped<ConteudosContext>();
 
         //services.AddScoped<INotificationHandler<ProdutoAbaixoEstoqueEvent>, ProdutoEventHandler>();
     }
