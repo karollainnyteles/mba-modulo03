@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-namespace TelesEducacao.Catalogo.Data.Migrations
+namespace TelesEducacao.Conteudos.Data.Migrations
 {
     /// <inheritdoc />
     public partial class Initial : Migration
@@ -20,8 +20,7 @@ namespace TelesEducacao.Catalogo.Data.Migrations
                     Descricao = table.Column<string>(type: "varchar(100)", maxLength: 300, nullable: false),
                     Ativo = table.Column<bool>(type: "bit", nullable: false, defaultValue: true),
                     Valor = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
-                    Imagem = table.Column<string>(type: "varchar(100)", maxLength: 250, nullable: false),
-                    CargaHoraria = table.Column<TimeSpan>(type: "time", nullable: false),
+                    CargaHoraria = table.Column<TimeSpan>(type: "time", nullable: true),
                     TituloConteudoProgramatico = table.Column<string>(type: "varchar(100)", nullable: false),
                     DescricaoConteudoProgramatico = table.Column<string>(type: "varchar(500)", nullable: false),
                     DataCadastro = table.Column<DateTime>(type: "datetime2", nullable: false)

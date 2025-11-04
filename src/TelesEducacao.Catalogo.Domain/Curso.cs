@@ -8,7 +8,7 @@ namespace TelesEducacao.Conteudos.Domain
         public string Descricao { get; private set; }
         public bool Ativo { get; private set; }
         public decimal Valor { get; private set; }
-        public TimeSpan CargaHoraria { get; set; }
+        public TimeSpan? CargaHoraria { get; set; }
 
         public ConteudoProgramatico ConteudoProgramatico { get; private set; }
         public List<Aula> Aulas { get; private set; } = new();

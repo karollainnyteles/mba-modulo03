@@ -12,9 +12,9 @@ public interface ICursoAppService : IDisposable
 
     Task<AulaDto> ObterAula(Guid aulaId);
 
-    Task<Guid?> Adicionar(CursoDto cursoDto);
+    Task<Guid?> Adicionar(CriaCursoDto criaCursoDto);
 
-    Task Atualizar(CursoDto cursoDto);
+    Task Atualizar(AtualizaCursoDto cursoDto);
 
     Task<bool> Remover(Guid id);
 

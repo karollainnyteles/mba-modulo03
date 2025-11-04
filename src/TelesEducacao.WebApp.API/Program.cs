@@ -15,7 +15,7 @@ builder.Services.AddOpenApi();
 builder.Services.AddDbContext<ConteudosContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
-builder.Services.AddAutoMapper(cfg => { }, typeof(DomainToDtoMappingProfile));
+builder.Services.AddAutoMapper(cfg => { }, typeof(DomainToDtoMappingProfile), typeof(DtoToDomainMappingProfile));
 
 builder.Services.AddMediatR(cfg =>
 {

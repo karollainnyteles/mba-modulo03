@@ -10,6 +10,7 @@ public class DomainToDtoMappingProfile : Profile
     {
         // CreateMap<Source, Destination>();
         CreateMap<Curso, CursoDto>();
+        CreateMap<ConteudoProgramatico, ConteudoProgramaticoDto>();
         CreateMap<Aula, AulaDto>();
     }
 }

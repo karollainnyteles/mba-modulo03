@@ -37,9 +37,9 @@ public class CursoAppService : ICursoAppService
         return _mapper.Map<AulaDto>(await _cursoRepository.ObterAula(aulaId));
     }
 
-    public async Task<Guid?> Adicionar(CursoDto cursoDto)
+    public async Task<Guid?> Adicionar(CriaCursoDto criaCursoDto)
     {
-        var curso = _mapper.Map<Curso>(cursoDto);
+        var curso = _mapper.Map<Curso>(criaCursoDto);
         _cursoRepository.Adicionar(curso);
 
         await _cursoRepository.UnitOfWork.Commit();
@@ -47,9 +47,21 @@ public class CursoAppService : ICursoAppService
         return curso.Id;
     }
 
-    public async Task Atualizar(CursoDto cursoDto)
+    public async Task Atualizar(AtualizaCursoDto atualizaCursoDto)
     {
+        var cursoDto = await ObterPorId(atualizaCursoDto.Id);
+        if (cursoDto == null)
+            throw new KeyNotFoundException("Curso não encontrado.");
+
         var curso = _mapper.Map<Curso>(cursoDto);
+
+        if (!string.IsNullOrEmpty(atualizaCursoDto.Nome)) curso.AlterarNome(atualizaCursoDto.Nome);
+        if (!string.IsNullOrEmpty(atualizaCursoDto.Descricao))
+            curso.AlterarDescricao(atualizaCursoDto.Descricao);
+        if (atualizaCursoDto.Valor.HasValue) curso.AlterarValor(atualizaCursoDto.Valor.Value);
+        if (atualizaCursoDto.Ativo.HasValue && atualizaCursoDto.Ativo.Value is true) curso.Ativar();
+        if (atualizaCursoDto.Ativo.HasValue && atualizaCursoDto.Ativo.Value is false) curso.Desativar();
+
         _cursoRepository.Atualizar(curso);
 
         await _cursoRepository.UnitOfWork.Commit();

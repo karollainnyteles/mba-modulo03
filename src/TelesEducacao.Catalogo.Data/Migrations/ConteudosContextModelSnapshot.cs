@@ -3,20 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
-using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using TelesEducacao.Conteudos.Data;
 
 #nullable disable
 
-namespace TelesEducacao.Catalogo.Data.Migrations
+namespace TelesEducacao.Conteudos.Data.Migrations
 {
     [DbContext(typeof(ConteudosContext))]
-    [Migration("20251014000622_Initial")]
-    partial class Initial
+    partial class ConteudosContextModelSnapshot : ModelSnapshot
     {
-        /// <inheritdoc />
-        protected override void BuildTargetModel(ModelBuilder modelBuilder)
+        protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -25,7 +22,7 @@ namespace TelesEducacao.Catalogo.Data.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("TelesEducacao.Catalogo.Domain.Aula", b =>
+            modelBuilder.Entity("TelesEducacao.Conteudos.Domain.Aula", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -61,7 +58,7 @@ namespace TelesEducacao.Catalogo.Data.Migrations
                     b.ToTable("Aulas");
                 });
 
-            modelBuilder.Entity("TelesEducacao.Catalogo.Domain.Curso", b =>
+            modelBuilder.Entity("TelesEducacao.Conteudos.Domain.Curso", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -72,7 +69,7 @@ namespace TelesEducacao.Catalogo.Data.Migrations
                         .HasColumnType("bit")
                         .HasDefaultValue(true);
 
-                    b.Property<TimeSpan>("CargaHoraria")
+                    b.Property<TimeSpan?>("CargaHoraria")
                         .HasColumnType("time");
 
                     b.Property<DateTime>("DataCadastro")
@@ -81,11 +78,6 @@ namespace TelesEducacao.Catalogo.Data.Migrations
                     b.Property<string>("Descricao")
                         .IsRequired()
                         .HasMaxLength(300)
-                        .HasColumnType("varchar(100)");
-
-                    b.Property<string>("Imagem")
-                        .IsRequired()
-                        .HasMaxLength(250)
                         .HasColumnType("varchar(100)");
 
                     b.Property<string>("Nome")
@@ -101,9 +93,9 @@ namespace TelesEducacao.Catalogo.Data.Migrations
                     b.ToTable("Cursos");
                 });
 
-            modelBuilder.Entity("TelesEducacao.Catalogo.Domain.Aula", b =>
+            modelBuilder.Entity("TelesEducacao.Conteudos.Domain.Aula", b =>
                 {
-                    b.HasOne("TelesEducacao.Catalogo.Domain.Curso", "Curso")
+                    b.HasOne("TelesEducacao.Conteudos.Domain.Curso", "Curso")
                         .WithMany("Aulas")
                         .HasForeignKey("CursoId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -112,9 +104,9 @@ namespace TelesEducacao.Catalogo.Data.Migrations
                     b.Navigation("Curso");
                 });
 
-            modelBuilder.Entity("TelesEducacao.Catalogo.Domain.Curso", b =>
+            modelBuilder.Entity("TelesEducacao.Conteudos.Domain.Curso", b =>
                 {
-                    b.OwnsOne("TelesEducacao.Catalogo.Domain.ConteudoProgramatico", "ConteudoProgramatico", b1 =>
+                    b.OwnsOne("TelesEducacao.Conteudos.Domain.ConteudoProgramatico", "ConteudoProgramatico", b1 =>
                         {
                             b1.Property<Guid>("CursoId")
                                 .HasColumnType("uniqueidentifier");
@@ -141,7 +133,7 @@ namespace TelesEducacao.Catalogo.Data.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("TelesEducacao.Catalogo.Domain.Curso", b =>
+            modelBuilder.Entity("TelesEducacao.Conteudos.Domain.Curso", b =>
                 {
                     b.Navigation("Aulas");
                 });
