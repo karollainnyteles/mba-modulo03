@@ -75,11 +75,12 @@ public class CursoAppService : ICursoAppService
         return await _cursoRepository.UnitOfWork.Commit();
     }
 
-    public async Task AdicionarAula(AulaDto aulaDto)
+    public async Task<Guid?> AdicionarAula(CriaAulaDto criaAulaDto)
     {
-        var aula = _mapper.Map<Aula>(aulaDto);
+        var aula = _mapper.Map<Aula>(criaAulaDto);
         _cursoRepository.AdicionarAula(aula);
         await _cursoRepository.UnitOfWork.Commit();
+        return aula.Id;
     }
 
     public async Task<bool> RemoverAula(Guid aulaId)

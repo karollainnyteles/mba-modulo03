@@ -12,7 +12,7 @@ using TelesEducacao.Conteudos.Data;
 namespace TelesEducacao.Conteudos.Data.Migrations
 {
     [DbContext(typeof(ConteudosContext))]
-    [Migration("20251104002216_Initial")]
+    [Migration("20251105001729_Initial")]
     partial class Initial
     {
         /// <inheritdoc />
@@ -42,7 +42,7 @@ namespace TelesEducacao.Conteudos.Data.Migrations
                     b.Property<DateTime>("DataCadastro")
                         .HasColumnType("datetime2");
 
-                    b.Property<TimeSpan>("Duracao")
+                    b.Property<TimeSpan?>("Duracao")
                         .HasColumnType("time");
 
                     b.PrimitiveCollection<string>("MaterialApoio")

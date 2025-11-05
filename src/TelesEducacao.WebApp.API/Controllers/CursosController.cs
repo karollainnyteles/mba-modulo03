@@ -92,4 +92,31 @@ public class CursosController : ControllerBase
 
         return Ok(cursoDto);
     }
+
+    [HttpPost("{cursoId}/aulas")]
+    [ProducesResponseType(typeof(Guid), StatusCodes.Status201Created)]
+    public async Task<ActionResult<Guid>> CriarAula(Guid cursoId, [FromBody] CriaAulaDto dto, CancellationToken ct)
+    {
+        dto.CursoId = cursoId;
+        var aulaId = await _cursoAppService.AdicionarAula(dto);
+        return StatusCode(StatusCodes.Status201Created, aulaId);
+    }
+
+    [HttpGet("{cursoId}/aulas")]
+    [ProducesResponseType(typeof(List<AulaDto>), StatusCodes.Status200OK)]
+    public async Task<ActionResult<List<AulaDto>>> ObterAulasPorCurso(Guid cursoId, CancellationToken ct)
+    {
+        var aulas = await _cursoAppService.ObterAulas(cursoId);
+        return Ok(aulas);
+    }
+
+    [HttpGet("{cursoId}/aulas/{aulaId}")]
+    [ProducesResponseType(typeof(AulaDto), StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
+    public async Task<ActionResult<AulaDto>> ObterAula(Guid cursoId, Guid aulaId, CancellationToken ct)
+    {
+        var aula = await _cursoAppService.ObterAula(aulaId);
+        if (aula == null) return NotFound();
+        return Ok(aula);
+    }
 }

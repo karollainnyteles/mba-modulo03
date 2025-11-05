@@ -37,7 +37,7 @@ namespace TelesEducacao.Conteudos.Data.Migrations
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     Titulo = table.Column<string>(type: "varchar(100)", maxLength: 100, nullable: false),
                     Conteudo = table.Column<string>(type: "varchar(100)", maxLength: 500, nullable: false),
-                    Duracao = table.Column<TimeSpan>(type: "time", nullable: false),
+                    Duracao = table.Column<TimeSpan>(type: "time", nullable: true),
                     MaterialApoio = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     CursoId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     DataCadastro = table.Column<DateTime>(type: "datetime2", nullable: false)

@@ -39,7 +39,7 @@ namespace TelesEducacao.Conteudos.Data.Migrations
                     b.Property<DateTime>("DataCadastro")
                         .HasColumnType("datetime2");
 
-                    b.Property<TimeSpan>("Duracao")
+                    b.Property<TimeSpan?>("Duracao")
                         .HasColumnType("time");
 
                     b.PrimitiveCollection<string>("MaterialApoio")

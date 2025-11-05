@@ -12,7 +12,6 @@ public class AulaMapping : IEntityTypeConfiguration<Aula>
 
         builder.Property(p => p.Conteudo).IsRequired().HasMaxLength(500);
         builder.Property(p => p.Titulo).IsRequired().HasMaxLength(100);
-        builder.Property(p => p.Duracao).IsRequired();
 
         builder.HasOne(c => c.Curso)
             .WithMany(c => c.Aulas)

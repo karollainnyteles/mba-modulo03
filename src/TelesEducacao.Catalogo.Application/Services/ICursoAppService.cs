@@ -18,7 +18,7 @@ public interface ICursoAppService : IDisposable
 
     Task<bool> Remover(Guid id);
 
-    Task AdicionarAula(AulaDto aulaDto);
+    Task<Guid?> AdicionarAula(CriaAulaDto criaAulaDto);
 
     Task<bool> RemoverAula(Guid id);
 }
