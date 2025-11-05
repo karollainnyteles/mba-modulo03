@@ -7,8 +7,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="FluentValidation" Version="12.1.0" />
-    <PackageReference Include="mediatr" Version="13.0.0" />
+    <Folder Include="Events\" />
+    <Folder Include="Queries\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\TelesEducacao.Core\TelesEducacao.Core.csproj" />
   </ItemGroup>
 
 </Project>

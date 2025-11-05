@@ -1,4 +1,6 @@
-﻿using TelesEducacao.Conteudos.Application.Services;
+﻿using MediatR;
+using TelesEducacao.Alunos.Application.Commands;
+using TelesEducacao.Conteudos.Application.Services;
 using TelesEducacao.Conteudos.Data;
 using TelesEducacao.Conteudos.Data.Repository;
 using TelesEducacao.Conteudos.Domain;
@@ -20,5 +22,10 @@ public static class DependencyInjection
         services.AddScoped<ConteudosContext>();
 
         //services.AddScoped<INotificationHandler<ProdutoAbaixoEstoqueEvent>, ProdutoEventHandler>();
+
+        //Alunos
+        //services.AddScoped<IAlunoRepository, AlunoRepository>();
+        services.AddScoped<IRequestHandler<RegistrarAlunoCommand, bool>, RegistrarAlunoCommandHandler>();
+        services.AddScoped<IRequestHandler<AdicionarMatriculaCommand, bool>, AdicionarMatriculaCommandHandler>();
     }
 }
