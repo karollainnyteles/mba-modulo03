@@ -33,7 +33,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TelesEducacao.Alunos.Domain
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TelesEducacao.Alunos.Application", "src\TelesEducacao.Alunos.Application\TelesEducacao.Alunos.Application.csproj", "{5BBEC065-B050-4FE3-9C5A-14E2E15B65E8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TelesEducacao.Aulas.Data", "TelesEducacao.Aulas.Data\TelesEducacao.Aulas.Data.csproj", "{905C1E90-3319-45FD-AB9A-CF1AD940C1C6}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TelesEducacao.Alunos.Data", "TelesEducacao.Aulas.Data\TelesEducacao.Alunos.Data.csproj", "{905C1E90-3319-45FD-AB9A-CF1AD940C1C6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

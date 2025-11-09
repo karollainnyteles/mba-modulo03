@@ -18,6 +18,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\TelesEducacao.Aulas.Data\TelesEducacao.Alunos.Data.csproj" />
     <ProjectReference Include="..\TelesEducacao.Alunos.Application\TelesEducacao.Alunos.Application.csproj" />
     <ProjectReference Include="..\TelesEducacao.Catalogo.Application\TelesEducacao.Conteudos.Application.csproj" />
     <ProjectReference Include="..\TelesEducacao.Catalogo.Data\TelesEducacao.Conteudos.Data.csproj" />

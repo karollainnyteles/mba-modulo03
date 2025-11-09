@@ -1,6 +1,4 @@
-﻿using TelesEducacao.Core.Messages;
-
-namespace TelesEducacao.Core.DomainObjects;
+﻿namespace TelesEducacao.Core.Messages.CommomMessages.DomainEvents;
 
 public class DomainEvent : Event
 {

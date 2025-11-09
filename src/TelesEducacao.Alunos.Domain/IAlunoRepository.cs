@@ -1,6 +1,14 @@
-﻿namespace TelesEducacao.Alunos.Domain;
+﻿using TelesEducacao.Core.Data;
 
-public interface IAlunoRepository
+namespace TelesEducacao.Alunos.Domain;
+
+public interface IAlunoRepository : IRepository<Aluno>
 {
     Task RegistrarAsync(Aluno aluno);
+
+    Task<Aluno?> ObterPorUserIdAsync(Guid userId);
+
+    Task<List<Aluno>> ObterTodosAsync();
+
+    Task<Guid?> AdicionarMatriculaAsync(Guid alunoId, Guid cursoId);
 }

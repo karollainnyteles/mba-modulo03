@@ -7,6 +7,8 @@ public class Matricula : Entity
     public Guid AlunoId { get; private set; }
     public Aluno Aluno { get; private set; }
     public Guid CursoId { get; private set; }
+
+    //public Curso Curso { get; private set; }
     public MatriculaStatus MatriculaStatus { get; private set; }
 
     public Matricula(Guid alunoId, Guid cursoId)
