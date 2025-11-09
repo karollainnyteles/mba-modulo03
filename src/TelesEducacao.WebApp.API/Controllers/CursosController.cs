@@ -1,7 +1,10 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using TelesEducacao.Conteudos.Application.Dtos;
 using TelesEducacao.Conteudos.Application.Services;
+using TelesEducacao.Core.Communication.Mediator;
+using TelesEducacao.Core.Messages.CommomMessages.Notifications;
 
 namespace TelesEducacao.WebApp.API.Controllers;
 
@@ -11,7 +14,7 @@ public class CursosController : ControllerBase
 {
     private readonly ICursoAppService _cursoAppService;
 
-    public CursosController(ICursoAppService cursoAppService)
+    public CursosController(INotificationHandler<DomainNotification> notifications, IMediatorHandler mediatorHandler, ICursoAppService cursoAppService) : base(mediatorHandler, notifications)
     {
         _cursoAppService = cursoAppService;
     }

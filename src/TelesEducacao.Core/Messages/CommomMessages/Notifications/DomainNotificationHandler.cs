@@ -17,7 +17,7 @@ public class DomainNotificationHandler : INotificationHandler<DomainNotification
         return Task.CompletedTask;
     }
 
-    public virtual List<DomainNotification> ObterNotifications()
+    public virtual List<DomainNotification> ObterNotificacoes()
     {
         return _notifications;
     }

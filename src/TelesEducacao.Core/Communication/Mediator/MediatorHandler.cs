@@ -1,5 +1,6 @@
 ﻿using MediatR;
 using TelesEducacao.Core.Messages;
+using TelesEducacao.Core.Messages.CommomMessages.Notifications;
 
 namespace TelesEducacao.Core.Communication.Mediator;
 
@@ -20,5 +21,10 @@ public class MediatorHandler : IMediatorHandler
     public async Task EnviarComando<T>(T command) where T : Command
     {
         await _mediator.Send(command);
+    }
+
+    public async Task PublicarNotificacao<T>(T notificacao) where T : DomainNotification
+    {
+        await _mediator.Publish(notificacao);
     }
 }
