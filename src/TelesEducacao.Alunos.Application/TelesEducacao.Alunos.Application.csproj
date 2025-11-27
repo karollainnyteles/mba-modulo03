@@ -8,10 +8,10 @@
 
   <ItemGroup>
     <Folder Include="Events\" />
-    <Folder Include="Queries\" />
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\TelesEducacao.Aulas.Data\TelesEducacao.Alunos.Data.csproj" />
     <ProjectReference Include="..\TelesEducacao.Alunos.Domain\TelesEducacao.Alunos.Domain.csproj" />
     <ProjectReference Include="..\TelesEducacao.Core\TelesEducacao.Core.csproj" />
   </ItemGroup>

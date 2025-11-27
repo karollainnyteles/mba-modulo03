@@ -1,6 +1,8 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using TelesEducacao.Alunos.Application.Commands;
+using TelesEducacao.Alunos.Application.Queries;
+using TelesEducacao.Alunos.Application.Queries.Dtos;
 using TelesEducacao.Core.Communication.Mediator;
 using TelesEducacao.Core.Messages.CommomMessages.Notifications;
 
@@ -11,10 +13,35 @@ namespace TelesEducacao.WebApp.API.Controllers;
 public class AlunosController : ControllerBase
 {
     private readonly IMediatorHandler _mediatorHandler;
+    private readonly IAlunoQueries _alunoQueries;
 
-    public AlunosController(INotificationHandler<DomainNotification> notifications, IMediatorHandler mediatorHandler) : base(mediatorHandler, notifications)
+    public AlunosController(INotificationHandler<DomainNotification> notifications, IMediatorHandler mediatorHandler, IAlunoQueries alunoQueries) : base(mediatorHandler, notifications)
     {
         _mediatorHandler = mediatorHandler;
+        _alunoQueries = alunoQueries;
+    }
+
+    [HttpGet("{id}")]
+    [ProducesResponseType(typeof(AlunoDto), StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
+    public async Task<ActionResult<AlunoDto>> ObterPorId(Guid id,
+        CancellationToken cancellationToken)
+    {
+        var aluno = await _alunoQueries.ObterPorId(id);
+        if (aluno == null)
+        {
+            return NotFound();
+        }
+        return Ok(aluno);
+    }
+
+    [HttpGet]
+    [ProducesResponseType(typeof(List<AlunoDto>), StatusCodes.Status200OK)]
+    public async Task<ActionResult> ObterTodos(
+        CancellationToken cancellationToken)
+    {
+        var alunos = await _alunoQueries.ObterTodos();
+        return Ok(alunos);
     }
 
     [HttpPost("{id}/Matricula/{cursoId}")]

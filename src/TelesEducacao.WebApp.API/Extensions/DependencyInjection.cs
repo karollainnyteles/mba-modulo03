@@ -1,5 +1,6 @@
 ﻿using MediatR;
 using TelesEducacao.Alunos.Application.Commands;
+using TelesEducacao.Alunos.Application.Queries;
 using TelesEducacao.Alunos.Data.Repository;
 using TelesEducacao.Alunos.Domain;
 using TelesEducacao.Conteudos.Application.Services;
@@ -31,6 +32,8 @@ public static class DependencyInjection
 
         //Alunos
         services.AddScoped<IAlunoRepository, AlunoRepository>();
+        services.AddScoped<IAlunoQueries, AlunoQueries>();
+
         services.AddScoped<IRequestHandler<RegistrarAlunoCommand, bool>, RegistrarAlunoCommandHandler>();
         services.AddScoped<IRequestHandler<AdicionarMatriculaCommand, bool>, AdicionarMatriculaCommandHandler>();
     }

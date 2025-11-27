@@ -1,17 +1,21 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 using TelesEducacao.Alunos.Domain;
+using TelesEducacao.Core.Communication.Mediator;
 using TelesEducacao.Core.Data;
+using TelesEducacao.Core.Messages;
 
 namespace TelesEducacao.Alunos.Data;
 
 public class AlunosContext : DbContext, IUnitOfWork
 {
+    private readonly IMediatorHandler _mediatorHandler;
+
+    public AlunosContext(DbContextOptions<AlunosContext> options, IMediatorHandler mediatorHandler) : base(options)
+    {
+        _mediatorHandler = mediatorHandler;
+    }
+
     public DbSet<Aluno> Alunos { get; set; }
     public DbSet<Matricula> Matriculas { get; set; }
 
@@ -22,11 +26,14 @@ public class AlunosContext : DbContext, IUnitOfWork
                      e => e.GetProperties().Where(p => p.ClrType == typeof(string))))
             property.SetColumnType("varchar(100)");
 
+        modelBuilder.Entity<Event>();
+
         modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
     }
 
     public async Task<bool> Commit()
     {
+        await _mediatorHandler.PublicarEventos(this);
         return await base.SaveChangesAsync() > 0;
     }
 }

@@ -2,6 +2,7 @@
 using System.Reflection;
 using TelesEducacao.Conteudos.Domain;
 using TelesEducacao.Core.Data;
+using TelesEducacao.Core.Messages;
 
 namespace TelesEducacao.Conteudos.Data;
 
@@ -20,6 +21,7 @@ public class ConteudosContext : DbContext, IUnitOfWork
         foreach (var property in modelBuilder.Model.GetEntityTypes().SelectMany(
                      e => e.GetProperties().Where(p => p.ClrType == typeof(string))))
             property.SetColumnType("varchar(100)");
+        modelBuilder.Entity<Event>();
 
         modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
     }
