@@ -31,6 +31,7 @@ public static class DependencyInjection
         //services.AddScoped<INotificationHandler<ProdutoAbaixoEstoqueEvent>, ProdutoEventHandler>();
 
         //Alunos
+        services.AddScoped<IUserService, UserService>();
         services.AddScoped<IAlunoRepository, AlunoRepository>();
         services.AddScoped<IAlunoQueries, AlunoQueries>();
 

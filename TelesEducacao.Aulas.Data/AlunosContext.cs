@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using System.Reflection;
 using TelesEducacao.Alunos.Domain;
 using TelesEducacao.Core.Communication.Mediator;
@@ -7,7 +8,7 @@ using TelesEducacao.Core.Messages;
 
 namespace TelesEducacao.Alunos.Data;
 
-public class AlunosContext : DbContext, IUnitOfWork
+public class AlunosContext : IdentityDbContext, IUnitOfWork
 {
     private readonly IMediatorHandler _mediatorHandler;
 
@@ -21,14 +22,15 @@ public class AlunosContext : DbContext, IUnitOfWork
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
+        base.OnModelCreating(modelBuilder);
+        modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
+
         //HACK: pra não setar string como varchar(max)
         foreach (var property in modelBuilder.Model.GetEntityTypes().SelectMany(
                      e => e.GetProperties().Where(p => p.ClrType == typeof(string))))
             property.SetColumnType("varchar(100)");
 
-        modelBuilder.Entity<Event>();
-
-        modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
+        modelBuilder.Ignore<Event>();
     }
 
     public async Task<bool> Commit()

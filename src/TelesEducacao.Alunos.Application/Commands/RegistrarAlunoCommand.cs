@@ -5,12 +5,12 @@ namespace TelesEducacao.Alunos.Application.Commands;
 
 public class RegistrarAlunoCommand : Command
 {
-    public string Nome { get; init; }
     public string Email { get; init; }
+    public string Senha { get; init; }
 
-    public RegistrarAlunoCommand(string nome, string email)
+    public RegistrarAlunoCommand(string senha, string email)
     {
-        Nome = nome;
+        Senha = senha;
         Email = email;
     }
 
@@ -26,7 +26,7 @@ public class RegistrarAlunoValidator : AbstractValidator<RegistrarAlunoCommand>
 {
     public RegistrarAlunoValidator()
     {
-        RuleFor(c => c.Nome)
+        RuleFor(c => c.Senha)
             .NotEmpty()
             .WithMessage("O nome do aluno é obrigatório.")
             .MaximumLength(100)
