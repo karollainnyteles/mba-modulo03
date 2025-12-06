@@ -27,7 +27,7 @@ public class AlunosController : ControllerBase
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     [ProducesResponseType(StatusCodes.Status500InternalServerError)]
     [AllowAnonymous]
-    public async Task<IActionResult> Register([FromBody] RegistrarAlunoCommand command,
+    public async Task<IActionResult> Registrar(RegistrarAlunoCommand command,
         CancellationToken cancellationToken)
     {
         await _mediatorHandler.EnviarComando(command);
@@ -56,11 +56,20 @@ public class AlunosController : ControllerBase
     }
 
     [HttpGet]
-    [ProducesResponseType(typeof(List<AlunoDto>), StatusCodes.Status200OK)]
+    [ProducesResponseType(typeof(IEnumerable<AlunoDto>), StatusCodes.Status200OK)]
     public async Task<ActionResult> ObterTodos(
         CancellationToken cancellationToken)
     {
         var alunos = await _alunoQueries.ObterTodos();
+        return Ok(alunos);
+    }
+
+    [HttpGet("{id}/Matriculas")]
+    [ProducesResponseType(typeof(IEnumerable<MatriculaDto>), StatusCodes.Status200OK)]
+    public async Task<ActionResult> ObterMatriculaPorAlunoId(Guid id,
+        CancellationToken cancellationToken)
+    {
+        var alunos = await _alunoQueries.ObterMatriculasPorAlunoId(id);
         return Ok(alunos);
     }
 

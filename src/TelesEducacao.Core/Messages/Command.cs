@@ -1,12 +1,16 @@
-﻿using FluentValidation.Results;
+﻿using System.Text.Json.Serialization;
+using FluentValidation.Results;
 using MediatR;
 
 namespace TelesEducacao.Core.Messages;
 
 public class Command : Message, IRequest<bool>
 {
+    [JsonIgnore]
     public DateTime Timestamp { get; private set; }
-    public ValidationResult ValidationResult { get; set; }
+
+    [JsonIgnore]
+    public ValidationResult? ValidationResult { get; set; }
 
     public Command()
     {

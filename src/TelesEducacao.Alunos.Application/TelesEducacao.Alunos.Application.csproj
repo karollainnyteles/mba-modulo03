@@ -16,4 +16,8 @@
     <ProjectReference Include="..\TelesEducacao.Core\TelesEducacao.Core.csproj" />
   </ItemGroup>
 
+	<ItemGroup>
+		<PackageReference Include="automapper" Version="15.0.1" />
+	</ItemGroup>
+
 </Project>

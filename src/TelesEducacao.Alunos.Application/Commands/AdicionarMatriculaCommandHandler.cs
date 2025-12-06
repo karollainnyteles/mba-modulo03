@@ -21,7 +21,7 @@ public class AdicionarMatriculaCommandHandler : IRequestHandler<AdicionarMatricu
     {
         if (!ValidarComando(request)) return false;
 
-        var matriculaId = await _alunoRepository.AdicionarMatriculaAsync(request.AlunoId, request.CursoId);
+        _alunoRepository.AdicionarMatriculaAsync(request.AlunoId, request.CursoId);
 
         return await _alunoRepository.UnitOfWork.Commit();
     }

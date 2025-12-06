@@ -8,7 +8,9 @@ public interface IAlunoRepository : IRepository<Aluno>
 
     Task<Aluno?> ObterPorUserIdAsync(Guid userId);
 
-    Task<List<Aluno>> ObterTodosAsync();
+    Task<IEnumerable<Aluno>> ObterTodosAsync();
 
-    Task<Guid?> AdicionarMatriculaAsync(Guid alunoId, Guid cursoId);
+    void AdicionarMatriculaAsync(Guid alunoId, Guid cursoId);
+
+    Task<IEnumerable<Matricula>> ObterMatriculasPorAlunoIdAsync(Guid alunoId);
 }

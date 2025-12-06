@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using TelesEducacao.Alunos.Domain;
 using TelesEducacao.Core.Data;
 
@@ -27,19 +28,28 @@ public class AlunoRepository : IAlunoRepository
         }
     }
 
-    public Task<Aluno?> ObterPorUserIdAsync(Guid userId)
+    public async Task<Aluno?> ObterPorUserIdAsync(Guid userId)
     {
-        throw new NotImplementedException();
+        return await _context.Alunos.FirstOrDefaultAsync(a => a.UserId == userId);
     }
 
-    public Task<List<Aluno>> ObterTodosAsync()
+    public async Task<IEnumerable<Aluno>> ObterTodosAsync()
     {
-        throw new NotImplementedException();
+        return await _context.Alunos.ToListAsync();
     }
 
-    public Task<Guid?> AdicionarMatriculaAsync(Guid alunoId, Guid cursoId)
+    public void AdicionarMatriculaAsync(Guid alunoId, Guid cursoId)
     {
-        throw new NotImplementedException();
+        var matricula = new Matricula(alunoId, cursoId);
+        _context.Add(matricula);
+    }
+
+    public async Task<IEnumerable<Matricula>> ObterMatriculasPorAlunoIdAsync(Guid alunoId)
+    {
+        return await _context.Matriculas
+             .AsNoTracking()
+             .Where(m => m.AlunoId == alunoId)
+             .ToListAsync();
     }
 
     public void Dispose()

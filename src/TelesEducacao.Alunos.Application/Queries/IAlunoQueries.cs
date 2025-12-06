@@ -7,4 +7,6 @@ public interface IAlunoQueries
     Task<IEnumerable<AlunoDto>> ObterTodos();
 
     Task<AlunoDto> ObterPorId(Guid id);
+
+    Task<IEnumerable<MatriculaDto>> ObterMatriculasPorAlunoId(Guid alunoId);
 }

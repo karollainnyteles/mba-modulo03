@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using System.Reflection;
+using TelesEducacao.Alunos.Application.AutoMapper;
 using TelesEducacao.Alunos.Data;
 using TelesEducacao.Conteudos.Application.AutoMapper;
 using TelesEducacao.Conteudos.Data;
@@ -29,7 +30,11 @@ builder.Services.AddDefaultIdentity<IdentityUser>(options =>
     .AddRoles<IdentityRole>()
     .AddEntityFrameworkStores<AlunosContext>();
 
-builder.Services.AddAutoMapper(cfg => { }, typeof(DomainToDtoMappingProfile), typeof(DtoToDomainMappingProfile));
+builder.Services.AddAutoMapper(cfg => { },
+    typeof(DomainToDtoMappingProfile),
+    typeof(DtoToDomainMappingProfile),
+    typeof(AlunosDtoToDomainMappingProfile),
+    typeof(AlunosDomainToDtoMappingProfile));
 
 builder.Services.AddMediatR(cfg =>
 {
