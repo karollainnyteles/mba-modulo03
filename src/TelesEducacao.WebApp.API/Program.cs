@@ -5,6 +5,7 @@ using TelesEducacao.Alunos.Application.AutoMapper;
 using TelesEducacao.Alunos.Data;
 using TelesEducacao.Conteudos.Application.AutoMapper;
 using TelesEducacao.Conteudos.Data;
+using TelesEducacao.WebApp.API.Configuration;
 using TelesEducacao.WebApp.API.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -44,6 +45,7 @@ builder.Services.AddMediatR(cfg =>
 builder.Services.RegisterServices();
 
 var app = builder.Build();
+app.UseDbMigrationAlunosHelper();
 
 app.MapOpenApi();
 app.UseSwaggerUI(options =>

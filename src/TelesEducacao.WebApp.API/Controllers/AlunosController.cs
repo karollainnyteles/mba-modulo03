@@ -1,5 +1,4 @@
 ﻿using MediatR;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using TelesEducacao.Alunos.Application.Commands;
 using TelesEducacao.Alunos.Application.Queries;
@@ -26,7 +25,6 @@ public class AlunosController : ControllerBase
     [ProducesResponseType(typeof(Guid), StatusCodes.Status201Created)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-    [AllowAnonymous]
     public async Task<IActionResult> Registrar(RegistrarAlunoCommand command,
         CancellationToken cancellationToken)
     {
