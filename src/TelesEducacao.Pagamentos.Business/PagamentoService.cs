@@ -4,7 +4,7 @@ namespace TelesEducacao.Pagamentos.Business;
 
 public class PagamentoService : IPagamentoService
 {
-    public Task<Transacao> RealizarPagamentoPedido(PagamentoMatricula pagamentoMatricula)
+    public Task<Transacao> RealizarPagamentoMatricula(PagamentoMatricula pagamentoMatricula)
     {
         throw new NotImplementedException();
     }

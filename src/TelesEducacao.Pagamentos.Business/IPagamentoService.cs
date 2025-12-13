@@ -4,5 +4,5 @@ namespace TelesEducacao.Pagamentos.Business;
 
 public interface IPagamentoService
 {
-    Task<Transacao> RealizarPagamentoPedido(PagamentoMatricula pagamentoMatricula);
+    Task<Transacao> RealizarPagamentoMatricula(PagamentoMatricula pagamentoMatricula);
 }
