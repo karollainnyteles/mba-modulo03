@@ -1,47 +1,35 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using TelesEducacao.Alunos.Data;
+using Microsoft.Extensions.DependencyInjection;
 using TelesEducacao.Alunos.Domain;
-using TelesEducacao.Conteudos.Data;
 
-namespace TelesEducacao.WebApp.API.Configuration;
+namespace TelesEducacao.Alunos.Data.Configuration;
 
 public static class DbMigrationHelperExtension
 {
-    public static void UseDbMigrationAlunosHelper(this WebApplication app)
+    public static void UseDbMigrationAlunosHelper(this IServiceProvider serviceProvider)
     {
-        DbMigrationHelpers.EnsureSeedData(app).Wait();
+        DbMigrationHelpers.EnsureSeedData(serviceProvider).Wait();
     }
 }
 
 public static class DbMigrationHelpers
 {
-    public static async Task EnsureSeedData(WebApplication serviceScope)
-    {
-        var serviceProvider = serviceScope.Services.CreateScope().ServiceProvider;
-        await EnsureSeedData(serviceProvider);
-    }
-
     public static async Task EnsureSeedData(IServiceProvider serviceProvider)
     {
-        using var scope = serviceProvider.GetRequiredService<IServiceScopeFactory>().CreateScope();
-        var env = scope.ServiceProvider.GetRequiredService<IWebHostEnvironment>();
+        using var scope = serviceProvider.CreateScope();
 
         var alunosContext = scope.ServiceProvider.GetRequiredService<AlunosContext>();
-        var conteudosContext = scope.ServiceProvider.GetRequiredService<ConteudosContext>();
         var userManager = scope.ServiceProvider.GetRequiredService<UserManager<IdentityUser>>();
         var roleManager = scope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
 
-        if (env.IsDevelopment() || env.IsStaging())
-        {
-            await alunosContext.Database.MigrateAsync();
-            await conteudosContext.Database.MigrateAsync();
-            await EnsureSeedRoles(alunosContext, roleManager);
-            await EnsureUsers(alunosContext, userManager);
-        }
+        await alunosContext.Database.MigrateAsync();
+        await EnsureSeedRoles(alunosContext, roleManager);
+        await EnsureUsers(alunosContext, userManager);
     }
 
-    private static async Task CreateUserWithRoleAsync(AlunosContext context, UserManager<IdentityUser> userManager, string email, string password, string roleName)
+    private static async Task CreateUserWithRoleAsync(AlunosContext context, UserManager<IdentityUser> userManager,
+        string email, string password, string roleName)
     {
         var user = new IdentityUser
         {
@@ -55,7 +43,8 @@ public static class DbMigrationHelpers
         }
         else
         {
-            throw new Exception($"Falha ao criar o usuário identity {email}: {string.Join(", ", result.Errors.Select(e => e.Description))}");
+            throw new Exception(
+                $"Falha ao criar o usuário identity {email}: {string.Join(", ", result.Errors.Select(e => e.Description))}");
         }
 
         var userId = Guid.Parse(user.Id);

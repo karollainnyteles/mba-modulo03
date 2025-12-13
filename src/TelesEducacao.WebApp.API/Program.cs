@@ -7,9 +7,10 @@ using System.Reflection;
 using System.Text;
 using TelesEducacao.Alunos.Application.AutoMapper;
 using TelesEducacao.Alunos.Data;
+using TelesEducacao.Alunos.Data.Configuration;
 using TelesEducacao.Conteudos.Application.AutoMapper;
 using TelesEducacao.Conteudos.Data;
-using TelesEducacao.WebApp.API.Configuration;
+using TelesEducacao.Conteudos.Data.Configuration;
 using TelesEducacao.WebApp.API.Extensions;
 using TelesEducacao.WebApp.API.Models;
 
@@ -104,7 +105,9 @@ builder.Services.AddAuthentication(options =>
 });
 
 var app = builder.Build();
-app.UseDbMigrationAlunosHelper();
+
+app.Services.UseDbMigrationAlunosHelper();
+app.Services.UseDbMigrationConteudosHelper();
 
 app.UseSwagger();
 app.UseSwaggerUI(options =>
