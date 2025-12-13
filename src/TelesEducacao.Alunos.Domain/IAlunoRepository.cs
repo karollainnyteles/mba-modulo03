@@ -4,7 +4,7 @@ namespace TelesEducacao.Alunos.Domain;
 
 public interface IAlunoRepository : IRepository<Aluno>
 {
-    Task RegistrarAsync(string email, string senha);
+    void CriarAsync(Aluno aluno);
 
     Task<Aluno?> ObterPorUserIdAsync(Guid userId);
 

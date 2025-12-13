@@ -9,6 +9,7 @@ using TelesEducacao.Conteudos.Data.Repository;
 using TelesEducacao.Conteudos.Domain;
 using TelesEducacao.Core.Communication.Mediator;
 using TelesEducacao.Core.Messages.CommomMessages.Notifications;
+using TelesEducacao.WebApp.API.AccessControl;
 
 namespace TelesEducacao.WebApp.API.Extensions;
 
@@ -35,7 +36,10 @@ public static class DependencyInjection
         services.AddScoped<IAlunoRepository, AlunoRepository>();
         services.AddScoped<IAlunoQueries, AlunoQueries>();
 
-        services.AddScoped<IRequestHandler<RegistrarAlunoCommand, bool>, RegistrarAlunoCommandHandler>();
+        services.AddScoped<IRequestHandler<CriarAlunoCommand, bool>, CriarAlunoCommandHandler>();
         services.AddScoped<IRequestHandler<AdicionarMatriculaCommand, bool>, AdicionarMatriculaCommandHandler>();
+
+        //Users
+        services.AddScoped<IUserService, UserService>();
     }
 }

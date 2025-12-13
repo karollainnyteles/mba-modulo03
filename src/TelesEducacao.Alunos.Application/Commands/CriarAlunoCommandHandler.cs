@@ -4,20 +4,22 @@ using TelesEducacao.Core.Messages;
 
 namespace TelesEducacao.Alunos.Application.Commands;
 
-public class RegistrarAlunoCommandHandler : IRequestHandler<RegistrarAlunoCommand, bool>
+public class CriarAlunoCommandHandler : IRequestHandler<CriarAlunoCommand, bool>
 {
     private readonly IAlunoRepository _alunoRepository;
 
-    public RegistrarAlunoCommandHandler(IAlunoRepository alunoRepository)
+    public CriarAlunoCommandHandler(IAlunoRepository alunoRepository)
     {
         _alunoRepository = alunoRepository;
     }
 
-    public async Task<bool> Handle(RegistrarAlunoCommand request, CancellationToken cancellationToken)
+    public async Task<bool> Handle(CriarAlunoCommand request, CancellationToken cancellationToken)
     {
         if (!ValidarComando(request)) return false;
 
-        await _alunoRepository.RegistrarAsync(request.Email, request.Senha);
+        var aluno = new Aluno(request.UserId);
+
+        _alunoRepository.CriarAsync(aluno);
 
         return await _alunoRepository.UnitOfWork.Commit();
     }

@@ -5,6 +5,8 @@ using TelesEducacao.Alunos.Application.Queries;
 using TelesEducacao.Alunos.Application.Queries.Dtos;
 using TelesEducacao.Core.Communication.Mediator;
 using TelesEducacao.Core.Messages.CommomMessages.Notifications;
+using TelesEducacao.WebApp.API.AccessControl;
+using TelesEducacao.WebApp.API.Dtos;
 
 namespace TelesEducacao.WebApp.API.Controllers;
 
@@ -14,20 +16,31 @@ public class AlunosController : ControllerBase
 {
     private readonly IMediatorHandler _mediatorHandler;
     private readonly IAlunoQueries _alunoQueries;
+    private readonly IUserService _userService;
 
-    public AlunosController(INotificationHandler<DomainNotification> notifications, IMediatorHandler mediatorHandler, IAlunoQueries alunoQueries) : base(mediatorHandler, notifications)
+    public AlunosController(INotificationHandler<DomainNotification> notifications, IMediatorHandler mediatorHandler, IAlunoQueries alunoQueries, IUserService userService) : base(mediatorHandler, notifications)
     {
         _mediatorHandler = mediatorHandler;
         _alunoQueries = alunoQueries;
+        _userService = userService;
     }
 
     [HttpPost]
     [ProducesResponseType(typeof(Guid), StatusCodes.Status201Created)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-    public async Task<IActionResult> Registrar(RegistrarAlunoCommand command,
+    public async Task<IActionResult> Registrar(UserDto userDto,
         CancellationToken cancellationToken)
     {
+        var identityId = await _userService.RegisterAsync(userDto.Email, userDto.Senha, "Cliente", cancellationToken);
+
+        if (identityId == null || identityId == Guid.Empty)
+        {
+            return StatusCode(StatusCodes.Status500InternalServerError, new { message = "Erro ao registrar usuário." });
+        }
+
+        var command = new CriarAlunoCommand(identityId.Value);
+
         await _mediatorHandler.EnviarComando(command);
         if (OperacaoValida())
         {
