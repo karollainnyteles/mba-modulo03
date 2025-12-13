@@ -87,12 +87,16 @@ public class AlunosController : ControllerBase
     [HttpPost("{id}/Matricula/{cursoId}")]
     [ProducesResponseType(StatusCodes.Status201Created)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
-    public async Task<ActionResult> AdicionarMatricula(Guid id, Guid cursoId,
+    public async Task<ActionResult> AdicionarMatricula(Guid id, Guid cursoId, AdicionarMatriculaCommand command,
         CancellationToken cancellationToken)
     {
         try
         {
-            var command = new AdicionarMatriculaCommand(id, cursoId);
+            if (id != command.AlunoId || cursoId != command.CursoId)
+            {
+                return BadRequest();
+            }
+
             await _mediatorHandler.EnviarComando(command);
 
             if (OperacaoValida())

@@ -11,6 +11,7 @@ using TelesEducacao.Alunos.Data.Configuration;
 using TelesEducacao.Conteudos.Application.AutoMapper;
 using TelesEducacao.Conteudos.Data;
 using TelesEducacao.Conteudos.Data.Configuration;
+using TelesEducacao.Pagamentos.Data;
 using TelesEducacao.WebApp.API.Extensions;
 using TelesEducacao.WebApp.API.Models;
 
@@ -25,6 +26,9 @@ builder.Services.AddDbContext<ConteudosContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 builder.Services.AddDbContext<AlunosContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+builder.Services.AddDbContext<PagamentosContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 builder.Services.AddDefaultIdentity<IdentityUser>(options =>

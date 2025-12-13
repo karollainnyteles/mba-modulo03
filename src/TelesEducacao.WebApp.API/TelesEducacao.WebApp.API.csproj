@@ -26,6 +26,8 @@
     <ProjectReference Include="..\TelesEducacao.Catalogo.Data\TelesEducacao.Conteudos.Data.csproj" />
     <ProjectReference Include="..\TelesEducacao.Catalogo.Domain\TelesEducacao.Conteudos.Domain.csproj" />
     <ProjectReference Include="..\TelesEducacao.Core\TelesEducacao.Core.csproj" />
+    <ProjectReference Include="..\TelesEducacao.Pagamentos.Business\TelesEducacao.Pagamentos.Business.csproj" />
+    <ProjectReference Include="..\TelesEducacao.Pagamentos.Data\TelesEducacao.Pagamentos.Data.csproj" />
   </ItemGroup>
 
 </Project>
