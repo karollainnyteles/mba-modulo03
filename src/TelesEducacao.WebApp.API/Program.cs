@@ -12,6 +12,7 @@ using TelesEducacao.Conteudos.Application.AutoMapper;
 using TelesEducacao.Conteudos.Data;
 using TelesEducacao.Conteudos.Data.Configuration;
 using TelesEducacao.Pagamentos.Data;
+using TelesEducacao.Pagamentos.Data.Configuration;
 using TelesEducacao.WebApp.API.Extensions;
 using TelesEducacao.WebApp.API.Models;
 
@@ -112,6 +113,7 @@ var app = builder.Build();
 
 app.Services.UseDbMigrationAlunosHelper();
 app.Services.UseDbMigrationConteudosHelper();
+app.Services.UseDbMigrationPagamentosHelper();
 
 app.UseSwagger();
 app.UseSwaggerUI(options =>

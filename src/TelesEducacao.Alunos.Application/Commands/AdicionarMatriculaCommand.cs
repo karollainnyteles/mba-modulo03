@@ -50,18 +50,22 @@ public class AdicionarMatriculaValidator : AbstractValidator<AdicionarMatriculaC
 
         RuleFor(c => c.NomeCartao)
             .NotEmpty()
-            .WithMessage("O nome no cartão é obrigatório.");
+            .WithMessage("O nome no cartão é obrigatório.")
+            .MaximumLength(250);
 
         RuleFor(c => c.NumeroCartao)
             .NotEmpty()
-            .WithMessage("O número do cartão é obrigatório.");
+            .WithMessage("O número do cartão é obrigatório.")
+            .MaximumLength(16);
 
         RuleFor(c => c.ExpiracaoCartao)
             .NotEmpty()
-            .WithMessage("A data de expiração do cartão é obrigatória.");
+            .WithMessage("A data de expiração do cartão é obrigatória.")
+            .MaximumLength(10);
 
         RuleFor(c => c.CvvCartao)
             .NotEmpty()
-            .WithMessage("O CVV do cartão é obrigatório.");
+            .WithMessage("O CVV do cartão é obrigatório.")
+            .MaximumLength(4);
     }
 }
