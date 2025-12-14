@@ -1,5 +1,6 @@
 ﻿using MediatR;
 using TelesEducacao.Alunos.Application.Commands;
+using TelesEducacao.Alunos.Application.Events;
 using TelesEducacao.Alunos.Application.Queries;
 using TelesEducacao.Alunos.Data.Repository;
 using TelesEducacao.Alunos.Domain;
@@ -57,5 +58,9 @@ public static class DependencyInjection
         services.AddScoped<PagamentosContext>();
 
         services.AddScoped<INotificationHandler<MatriculaAdicionadaEvent>, PagamentoEventHandler>();
+        services.AddScoped<INotificationHandler<PagamentoRealizadoEvent>, MatriculaEventHandler>();
+        services.AddScoped<INotificationHandler<PagamentoRecusadoEvent>, MatriculaEventHandler>();
+        services.AddScoped<IRequestHandler<CancelarMatriculaCommand, bool>, CancelarMatriaculaCommandHandler>();
+        services.AddScoped<IRequestHandler<AtivarMatriculaCommand, bool>, AtivarMatriculaCommandHandler>();
     }
 }

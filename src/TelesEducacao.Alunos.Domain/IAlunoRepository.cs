@@ -13,4 +13,6 @@ public interface IAlunoRepository : IRepository<Aluno>
     void AdicionarMatriculaAsync(Guid alunoId, Guid cursoId);
 
     Task<IEnumerable<Matricula>> ObterMatriculasPorAlunoIdAsync(Guid alunoId);
+
+    Task AlterarStatusMatriculaAsync(Guid matriculaId, MatriculaStatus status);
 }

@@ -4,5 +4,6 @@ public enum MatriculaStatus
 {
     Ativa,
     PendentePagamento,
-    Concluida
+    Cancelada,
+    Concluida,
 }

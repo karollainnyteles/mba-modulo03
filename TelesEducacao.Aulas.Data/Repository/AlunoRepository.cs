@@ -44,6 +44,17 @@ public class AlunoRepository : IAlunoRepository
              .ToListAsync();
     }
 
+    public async Task AlterarStatusMatriculaAsync(Guid matriculaId, MatriculaStatus status)
+    {
+        var matricula = await _context.Matriculas.FindAsync(matriculaId);
+
+        if (matricula != null)
+        {
+            matricula.AtualizarStatus(status);
+            _context.Matriculas.Update(matricula);
+        }
+    }
+
     public void Dispose()
     {
         _context.Dispose();
