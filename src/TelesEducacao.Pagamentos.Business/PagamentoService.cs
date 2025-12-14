@@ -22,12 +22,6 @@ public class PagamentoService : IPagamentoService
 
     public async Task<Transacao> RealizarPagamentoMatricula(PagamentoMatricula pagamentoMatricula)
     {
-        var matricula = new Matricula
-        {
-            Id = pagamentoMatricula.MatriculaId,
-            Valor = pagamentoMatricula.Valor
-        };
-
         var pagamento = new Pagamento
         {
             Valor = pagamentoMatricula.Valor,
@@ -41,11 +35,11 @@ public class PagamentoService : IPagamentoService
             MatriculaId = pagamentoMatricula.MatriculaId
         };
 
-        var transacao = _pagamentoCartaoCreditoFacade.RealizarPagamento(matricula, pagamento);
+        var transacao = _pagamentoCartaoCreditoFacade.RealizarPagamento(pagamento);
 
         if (transacao.StatusTransacao == StatusTransacao.Pago)
         {
-            pagamento.AdicionarEvento(new PagamentoRealizadoEvent(matricula.Id, pagamentoMatricula.AlunoId, transacao.PagamentoId, transacao.Id, pagamentoMatricula.Valor));
+            pagamento.AdicionarEvento(new PagamentoRealizadoEvent(pagamento.MatriculaId, pagamentoMatricula.AlunoId, transacao.PagamentoId, transacao.Id, pagamentoMatricula.Valor));
 
             _pagamentoRepository.Adicionar(pagamento);
             _pagamentoRepository.AdicionarTransacao(transacao);
@@ -55,7 +49,7 @@ public class PagamentoService : IPagamentoService
         }
 
         await _mediatorHandler.PublicarNotificacao(new DomainNotification("pagamento", "A operadora recusou o pagamento"));
-        await _mediatorHandler.PublicarEvento(new PagamentoRecusadoEvent(matricula.Id, pagamentoMatricula.AlunoId, transacao.PagamentoId, transacao.Id, matricula.Valor));
+        await _mediatorHandler.PublicarEvento(new PagamentoRecusadoEvent(pagamento.MatriculaId, pagamentoMatricula.AlunoId, transacao.PagamentoId, transacao.Id, pagamentoMatricula.Valor));
 
         return transacao;
     }

@@ -30,10 +30,11 @@ public class AlunoRepository : IAlunoRepository
         return await _context.Alunos.ToListAsync();
     }
 
-    public void AdicionarMatriculaAsync(Guid alunoId, Guid cursoId)
+    public async Task<Guid?> AdicionarMatriculaAsync(Guid alunoId, Guid cursoId)
     {
         var matricula = new Matricula(alunoId, cursoId);
-        _context.Add(matricula);
+        await _context.AddAsync(matricula);
+        return matricula.Id;
     }
 
     public async Task<IEnumerable<Matricula>> ObterMatriculasPorAlunoIdAsync(Guid alunoId)

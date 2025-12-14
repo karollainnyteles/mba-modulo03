@@ -13,7 +13,7 @@ public class PagamentoCartaoCreditoFacade : IPagamentoCartaoCreditoFacade
         _configManager = configManager;
     }
 
-    public Transacao RealizarPagamento(Matricula matricula, Pagamento pagamento)
+    public Transacao RealizarPagamento(Pagamento pagamento)
     {
         var apiKey = _configManager.GetValue("apiKey");
         var encriptionKey = _configManager.GetValue("encriptionKey");
@@ -21,12 +21,12 @@ public class PagamentoCartaoCreditoFacade : IPagamentoCartaoCreditoFacade
         var serviceKey = _payPalGateway.GetPayPalServiceKey(apiKey, encriptionKey);
         var cardHashKey = _payPalGateway.GetCardHashKey(serviceKey, pagamento.DadosCartao.Numero);
 
-        var pagamentoResult = _payPalGateway.CommitTransaction(cardHashKey, matricula.Id.ToString(), pagamento.Valor);
+        var pagamentoResult = _payPalGateway.CommitTransaction(cardHashKey, pagamento.MatriculaId.ToString(), pagamento.Valor);
 
         // TODO: O gateway de pagamentos que deve retornar o objeto transação
         var transacao = new Transacao
         {
-            MatriculaId = matricula.Id,
+            MatriculaId = pagamento.MatriculaId,
             Total = pagamento.Valor,
             PagamentoId = pagamento.Id
         };

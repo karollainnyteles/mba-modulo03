@@ -9,6 +9,7 @@ public class AdicionarMatriculaCommand : Command, IRequest
 {
     public Guid AlunoId { get; init; }
     public Guid CursoId { get; init; }
+    public decimal Valor { get; init; }
 
     public string NomeCartao { get; init; }
 
@@ -18,7 +19,7 @@ public class AdicionarMatriculaCommand : Command, IRequest
 
     public string CvvCartao { get; init; }
 
-    public AdicionarMatriculaCommand(Guid alunoId, Guid cursoId, string nomeCartao, string numeroCartao, string expiracaoCartao, string cvvCartao)
+    public AdicionarMatriculaCommand(Guid alunoId, Guid cursoId, decimal valor, string nomeCartao, string numeroCartao, string expiracaoCartao, string cvvCartao)
     {
         AlunoId = alunoId;
         CursoId = cursoId;
@@ -26,6 +27,7 @@ public class AdicionarMatriculaCommand : Command, IRequest
         NumeroCartao = numeroCartao;
         ExpiracaoCartao = expiracaoCartao;
         CvvCartao = cvvCartao;
+        Valor = valor;
     }
 
     public override bool EhValido()

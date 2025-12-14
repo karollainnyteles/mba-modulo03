@@ -2,6 +2,7 @@
 using TelesEducacao.Alunos.Domain;
 using TelesEducacao.Core.Communication.Mediator;
 using TelesEducacao.Core.Messages;
+using TelesEducacao.Core.Messages.CommomMessages.IntegrationEvents;
 using TelesEducacao.Core.Messages.CommomMessages.Notifications;
 
 namespace TelesEducacao.Alunos.Application.Commands;
@@ -21,9 +22,26 @@ public class AdicionarMatriculaCommandHandler : IRequestHandler<AdicionarMatricu
     {
         if (!ValidarComando(request)) return false;
 
-        _alunoRepository.AdicionarMatriculaAsync(request.AlunoId, request.CursoId);
+        var matriculaId = await _alunoRepository.AdicionarMatriculaAsync(request.AlunoId, request.CursoId);
+        var result = await _alunoRepository.UnitOfWork.Commit();
 
-        return await _alunoRepository.UnitOfWork.Commit();
+        if (matriculaId.HasValue)
+        {
+            var matriculaAdicionadaEvent = new MatriculaAdicionadaEvent(
+                matriculaId.Value,
+                request.Valor,
+                request.AlunoId,
+                request.CursoId,
+                request.NomeCartao,
+                request.NumeroCartao,
+                request.ExpiracaoCartao,
+                request.CvvCartao
+            );
+
+            await _mediatorHandler.PublicarEvento(matriculaAdicionadaEvent);
+        }
+
+        return result;
     }
 
     private bool ValidarComando(Command command)

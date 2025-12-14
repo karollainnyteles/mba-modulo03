@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using TelesEducacao.Alunos.Application.Commands;
 using TelesEducacao.Alunos.Application.Queries;
 using TelesEducacao.Alunos.Application.Queries.Dtos;
+using TelesEducacao.Conteudos.Application.Services;
 using TelesEducacao.Core.Communication.Mediator;
 using TelesEducacao.Core.Messages.CommomMessages.Notifications;
 using TelesEducacao.WebApp.API.AccessControl;
@@ -17,12 +18,14 @@ public class AlunosController : ControllerBase
     private readonly IMediatorHandler _mediatorHandler;
     private readonly IAlunoQueries _alunoQueries;
     private readonly IUserService _userService;
+    private readonly ICursoAppService _cursoAppService;
 
-    public AlunosController(INotificationHandler<DomainNotification> notifications, IMediatorHandler mediatorHandler, IAlunoQueries alunoQueries, IUserService userService) : base(mediatorHandler, notifications)
+    public AlunosController(INotificationHandler<DomainNotification> notifications, IMediatorHandler mediatorHandler, IAlunoQueries alunoQueries, IUserService userService, ICursoAppService cursoAppService) : base(mediatorHandler, notifications)
     {
         _mediatorHandler = mediatorHandler;
         _alunoQueries = alunoQueries;
         _userService = userService;
+        _cursoAppService = cursoAppService;
     }
 
     [HttpPost]
@@ -87,15 +90,32 @@ public class AlunosController : ControllerBase
     [HttpPost("{id}/Matricula/{cursoId}")]
     [ProducesResponseType(StatusCodes.Status201Created)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
-    public async Task<ActionResult> AdicionarMatricula(Guid id, Guid cursoId, AdicionarMatriculaCommand command,
+    public async Task<ActionResult> AdicionarMatricula(Guid id, Guid cursoId, AdicionarMatriculaDto matriculaDto,
         CancellationToken cancellationToken)
     {
         try
         {
-            if (id != command.AlunoId || cursoId != command.CursoId)
+            if (id != matriculaDto.AlunoId || cursoId != matriculaDto.CursoId)
             {
                 return BadRequest();
             }
+
+            var curso = await _cursoAppService.ObterPorId(cursoId);
+
+            if (curso == null)
+            {
+                return BadRequest(new { message = "Curso não encontrado." });
+            }
+
+            var command = new AdicionarMatriculaCommand(
+                matriculaDto.AlunoId,
+                matriculaDto.CursoId,
+                curso.Valor,
+                matriculaDto.NomeCartao,
+                matriculaDto.NumeroCartao,
+                matriculaDto.ExpiracaoCartao,
+                matriculaDto.CvvCartao
+            );
 
             await _mediatorHandler.EnviarComando(command);
 
