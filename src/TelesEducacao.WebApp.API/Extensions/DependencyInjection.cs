@@ -49,7 +49,7 @@ public static class DependencyInjection
         // Pagamento
         //services.AddScoped<IPagamentoRepository, PagamentoRepository>();
         services.AddScoped<IPagamentoService, PagamentoService>();
-        //services.AddScoped<IPagamentoCartaoCreditoFacade, PagamentoCartaoCreditoFacade>();
+        services.AddScoped<IPagamentoCartaoCreditoFacade, PagamentoCartaoCreditoFacade>();
         //services.AddScoped<IPayPalGateway, PayPalGateway>();
         //services.AddScoped<IConfigurationManager, ConfigurationManager>();
         services.AddScoped<PagamentosContext>();

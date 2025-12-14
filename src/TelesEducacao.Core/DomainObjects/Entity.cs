@@ -10,12 +10,12 @@ public abstract class Entity
     private List<Event> _eventos = new();
     public IReadOnlyCollection<Event> Eventos => _eventos.AsReadOnly();
 
-    protected void AdicionarEvento(Event eventItem)
+    public void AdicionarEvento(Event eventItem)
     {
         _eventos.Add(eventItem);
     }
 
-    protected void RemoverEvento(Event eventItem)
+    public void RemoverEvento(Event eventItem)
     {
         _eventos.Remove(eventItem);
     }

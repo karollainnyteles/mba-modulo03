@@ -2,9 +2,12 @@
 
 public class MatriculaAdicionadaEvent : IntegrationEvent
 {
+    public Guid MatriculaId { get; init; }
     public Guid AlunoId { get; init; }
 
     public Guid CursoId { get; init; }
+
+    public decimal Valor { get; init; }
 
     public string NomeCartao { get; init; }
 
@@ -14,7 +17,7 @@ public class MatriculaAdicionadaEvent : IntegrationEvent
 
     public string CvvCartao { get; init; }
 
-    public MatriculaAdicionadaEvent(Guid alunoId, Guid cursoId, string nomeCartao, string numeroCartao, string expiracaoCartao, string cvvCartao)
+    public MatriculaAdicionadaEvent(Guid matriculaId, decimal valor, Guid alunoId, Guid cursoId, string nomeCartao, string numeroCartao, string expiracaoCartao, string cvvCartao)
     {
         AlunoId = alunoId;
         CursoId = cursoId;
@@ -22,5 +25,7 @@ public class MatriculaAdicionadaEvent : IntegrationEvent
         NumeroCartao = numeroCartao;
         ExpiracaoCartao = expiracaoCartao;
         CvvCartao = cvvCartao;
+        Valor = valor;
+        MatriculaId = matriculaId;
     }
 }
