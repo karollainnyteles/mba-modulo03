@@ -6,4 +6,8 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+	<ItemGroup>
+		<ProjectReference Include="..\TelesEducacao.Pagamentos.Business\TelesEducacao.Pagamentos.Business.csproj" />
+	</ItemGroup>
+
 </Project>

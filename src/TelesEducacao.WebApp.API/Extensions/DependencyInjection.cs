@@ -10,9 +10,11 @@ using TelesEducacao.Conteudos.Domain;
 using TelesEducacao.Core.Communication.Mediator;
 using TelesEducacao.Core.Messages.CommomMessages.IntegrationEvents;
 using TelesEducacao.Core.Messages.CommomMessages.Notifications;
+using TelesEducacao.Pagamentos.AntiCorruption;
 using TelesEducacao.Pagamentos.Business;
 using TelesEducacao.Pagamentos.Business.Events;
 using TelesEducacao.Pagamentos.Data;
+using TelesEducacao.Pagamentos.Data.Repository;
 using TelesEducacao.WebApp.API.AccessControl;
 
 namespace TelesEducacao.WebApp.API.Extensions;
@@ -47,11 +49,11 @@ public static class DependencyInjection
         services.AddScoped<IUserService, UserService>();
 
         // Pagamento
-        //services.AddScoped<IPagamentoRepository, PagamentoRepository>();
+        services.AddScoped<IPagamentoRepository, PagamentoRepository>();
         services.AddScoped<IPagamentoService, PagamentoService>();
         services.AddScoped<IPagamentoCartaoCreditoFacade, PagamentoCartaoCreditoFacade>();
-        //services.AddScoped<IPayPalGateway, PayPalGateway>();
-        //services.AddScoped<IConfigurationManager, ConfigurationManager>();
+        services.AddScoped<IPayPalGateway, PayPalGateway>();
+        services.AddScoped<Pagamentos.AntiCorruption.IConfigurationManager, Pagamentos.AntiCorruption.ConfigurationManager>();
         services.AddScoped<PagamentosContext>();
 
         services.AddScoped<INotificationHandler<MatriculaAdicionadaEvent>, PagamentoEventHandler>();

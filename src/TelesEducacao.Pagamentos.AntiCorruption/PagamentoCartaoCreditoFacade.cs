@@ -1,6 +1,6 @@
-﻿using TelesEducacao.Pagamentos.AntiCorruption;
+﻿using TelesEducacao.Pagamentos.Business;
 
-namespace TelesEducacao.Pagamentos.Business;
+namespace TelesEducacao.Pagamentos.AntiCorruption;
 
 public class PagamentoCartaoCreditoFacade : IPagamentoCartaoCreditoFacade
 {

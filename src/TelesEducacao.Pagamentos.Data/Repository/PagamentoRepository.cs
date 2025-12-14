@@ -3,7 +3,7 @@ using TelesEducacao.Pagamentos.Business;
 
 namespace TelesEducacao.Pagamentos.Data.Repository;
 
-public class PagamentoRepository
+public class PagamentoRepository : IPagamentoRepository
 {
     private readonly PagamentosContext _context;
 

@@ -8,7 +8,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\TelesEducacao.Core\TelesEducacao.Core.csproj" />
-    <ProjectReference Include="..\TelesEducacao.Pagamentos.AntiCorruption\TelesEducacao.Pagamentos.AntiCorruption.csproj" />
   </ItemGroup>
 
 </Project>
