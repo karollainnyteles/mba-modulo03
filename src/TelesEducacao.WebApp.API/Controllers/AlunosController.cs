@@ -1,4 +1,5 @@
 ﻿using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using TelesEducacao.Alunos.Application.Commands;
 using TelesEducacao.Alunos.Application.Queries;
@@ -14,6 +15,7 @@ namespace TelesEducacao.WebApp.API.Controllers;
 
 [ApiController]
 [Route("[controller]")]
+[Authorize(Roles = "Aluno")]
 public class AlunosController : ControllerBase
 {
     private readonly IMediatorHandler _mediatorHandler;
@@ -29,6 +31,7 @@ public class AlunosController : ControllerBase
         _cursoAppService = cursoAppService;
     }
 
+    [AllowAnonymous]
     [HttpPost]
     [ProducesResponseType(typeof(Guid), StatusCodes.Status201Created)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -56,6 +59,7 @@ public class AlunosController : ControllerBase
         return BadRequest(new { message = erro });
     }
 
+    [AllowAnonymous]
     [HttpGet("{id}")]
     [ProducesResponseType(typeof(AlunoDto), StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -70,6 +74,7 @@ public class AlunosController : ControllerBase
         return Ok(aluno);
     }
 
+    [AllowAnonymous]
     [HttpGet]
     [ProducesResponseType(typeof(IEnumerable<AlunoDto>), StatusCodes.Status200OK)]
     public async Task<ActionResult> ObterTodos(

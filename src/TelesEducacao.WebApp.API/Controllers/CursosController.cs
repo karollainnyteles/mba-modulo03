@@ -10,6 +10,7 @@ namespace TelesEducacao.WebApp.API.Controllers;
 
 [ApiController]
 [Route("[controller]")]
+[Authorize(Roles = "Admin")]
 public class CursosController : ControllerBase
 {
     private readonly ICursoAppService _cursoAppService;
@@ -74,6 +75,7 @@ public class CursosController : ControllerBase
         }
     }
 
+    [AllowAnonymous]
     [HttpGet]
     [ProducesResponseType(typeof(List<CursoDto>), StatusCodes.Status200OK)]
     public async Task<ActionResult<List<CursoDto>>> ObterTodos(CancellationToken cancellationToken)
@@ -105,6 +107,7 @@ public class CursosController : ControllerBase
         return StatusCode(StatusCodes.Status201Created, aulaId);
     }
 
+    [AllowAnonymous]
     [HttpGet("{cursoId}/aulas")]
     [ProducesResponseType(typeof(List<AulaDto>), StatusCodes.Status200OK)]
     public async Task<ActionResult<List<AulaDto>>> ObterAulasPorCurso(Guid cursoId, CancellationToken ct)
@@ -113,6 +116,7 @@ public class CursosController : ControllerBase
         return Ok(aulas);
     }
 
+    [AllowAnonymous]
     [HttpGet("{cursoId}/aulas/{aulaId}")]
     [ProducesResponseType(typeof(AulaDto), StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
