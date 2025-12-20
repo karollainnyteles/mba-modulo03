@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using TelesEducacao.Alunos.Data;
 
@@ -11,9 +12,11 @@ using TelesEducacao.Alunos.Data;
 namespace TelesEducacao.Alunos.Data.Migrations
 {
     [DbContext(typeof(AlunosContext))]
-    partial class AlunosContextModelSnapshot : ModelSnapshot
+    [Migration("20251219235154_AddAulasConcluidas")]
+    partial class AddAulasConcluidas
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -246,7 +249,7 @@ namespace TelesEducacao.Alunos.Data.Migrations
                     b.ToTable("Alunos");
                 });
 
-            modelBuilder.Entity("TelesEducacao.Alunos.Domain.AulaConluida", b =>
+            modelBuilder.Entity("TelesEducacao.Alunos.Domain.AulasConluidas", b =>
                 {
                     b.Property<Guid>("AulaId")
                         .HasColumnType("uniqueidentifier");
@@ -262,28 +265,6 @@ namespace TelesEducacao.Alunos.Data.Migrations
                     b.HasIndex("MatriculaId");
 
                     b.ToTable("AulasConcluidas");
-                });
-
-            modelBuilder.Entity("TelesEducacao.Alunos.Domain.Certificado", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<DateTime>("DataCadastro")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime>("DataEmissao")
-                        .HasColumnType("datetime2");
-
-                    b.Property<Guid>("MatriculaId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("MatriculaId");
-
-                    b.ToTable("Certificados");
                 });
 
             modelBuilder.Entity("TelesEducacao.Alunos.Domain.Matricula", b =>
@@ -369,21 +350,10 @@ namespace TelesEducacao.Alunos.Data.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("TelesEducacao.Alunos.Domain.AulaConluida", b =>
+            modelBuilder.Entity("TelesEducacao.Alunos.Domain.AulasConluidas", b =>
                 {
                     b.HasOne("TelesEducacao.Alunos.Domain.Matricula", "Matricula")
                         .WithMany()
-                        .HasForeignKey("MatriculaId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Matricula");
-                });
-
-            modelBuilder.Entity("TelesEducacao.Alunos.Domain.Certificado", b =>
-                {
-                    b.HasOne("TelesEducacao.Alunos.Domain.Matricula", "Matricula")
-                        .WithMany("Certificados")
                         .HasForeignKey("MatriculaId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -409,11 +379,6 @@ namespace TelesEducacao.Alunos.Data.Migrations
             modelBuilder.Entity("TelesEducacao.Alunos.Domain.Aluno", b =>
                 {
                     b.Navigation("Matriculas");
-                });
-
-            modelBuilder.Entity("TelesEducacao.Alunos.Domain.Matricula", b =>
-                {
-                    b.Navigation("Certificados");
                 });
 #pragma warning restore 612, 618
         }

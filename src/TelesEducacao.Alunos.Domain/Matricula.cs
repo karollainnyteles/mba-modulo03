@@ -10,6 +10,8 @@ public class Matricula : Entity
 
     public MatriculaStatus MatriculaStatus { get; private set; }
 
+    public List<Certificado> Certificados { get; private set; }
+
     public Matricula(Guid alunoId, Guid cursoId)
     {
         AlunoId = alunoId;

@@ -1,6 +1,5 @@
 ﻿using FluentValidation;
 using MediatR;
-using System.ComponentModel.DataAnnotations;
 using TelesEducacao.Core.Messages;
 
 namespace TelesEducacao.Alunos.Application.Commands;

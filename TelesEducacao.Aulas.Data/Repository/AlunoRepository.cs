@@ -56,6 +56,36 @@ public class AlunoRepository : IAlunoRepository
         }
     }
 
+    public async Task ConcluirAula(Guid matriculaId, Guid aulaId)
+    {
+        var matricula = await _context.Matriculas.FindAsync(matriculaId);
+        if (matricula != null)
+        {
+            var aulaConcluida = new AulaConluida(matriculaId, aulaId);
+            await _context.AulasConcluidas.AddAsync(aulaConcluida);
+        }
+    }
+
+    public async Task<Matricula> ObterMatriculaPorId(Guid matriculaId)
+    {
+        return await _context.Matriculas.FindAsync(matriculaId);
+    }
+
+    public async Task<IEnumerable<AulaConluida>> ObterAulasConcluidasPorMatriculaId(Guid matriculaId)
+    {
+        return await _context.AulasConcluidas
+            .AsNoTracking()
+            .Where(ac => ac.MatriculaId == matriculaId)
+            .ToListAsync();
+    }
+
+    public async Task<Guid?> AdicionarCertificadoAsync(Guid matriculaId)
+    {
+        var certificado = new Certificado(matriculaId);
+        await _context.Certificados.AddAsync(certificado);
+        return certificado.Id;
+    }
+
     public void Dispose()
     {
         _context.Dispose();

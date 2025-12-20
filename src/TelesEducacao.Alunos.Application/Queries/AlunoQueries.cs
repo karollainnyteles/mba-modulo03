@@ -32,4 +32,15 @@ public class AlunoQueries : IAlunoQueries
         var matriculas = await _alunoRepository.ObterMatriculasPorAlunoIdAsync(alunoId);
         return _mapper.Map<IEnumerable<MatriculaDto>>(matriculas);
     }
+
+    public async Task<MatriculaDto> ObterMatriculaPorId(Guid matriculaId)
+    {
+        var matricula = await _alunoRepository.ObterMatriculaPorId(matriculaId);
+        return _mapper.Map<MatriculaDto>(matricula);
+    }
+
+    public async Task<IEnumerable<AulaConluida>> ObterAulasConcluidasPorMatriculaId(Guid matriculaId)
+    {
+        return await _alunoRepository.ObterAulasConcluidasPorMatriculaId(matriculaId);
+    }
 }

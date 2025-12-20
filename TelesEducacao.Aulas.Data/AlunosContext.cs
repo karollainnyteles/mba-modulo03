@@ -19,6 +19,8 @@ public class AlunosContext : IdentityDbContext, IUnitOfWork
 
     public DbSet<Aluno> Alunos { get; set; }
     public DbSet<Matricula> Matriculas { get; set; }
+    public DbSet<AulaConluida> AulasConcluidas { get; set; }
+    public DbSet<Certificado> Certificados { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

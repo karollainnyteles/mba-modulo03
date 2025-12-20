@@ -36,8 +36,6 @@ public static class DependencyInjection
         services.AddScoped<ICargaHorariaService, CargaHorariaService>();
         services.AddScoped<ConteudosContext>();
 
-        //services.AddScoped<INotificationHandler<ProdutoAbaixoEstoqueEvent>, ProdutoEventHandler>();
-
         //Alunos
         services.AddScoped<IUserService, UserService>();
         services.AddScoped<IAlunoRepository, AlunoRepository>();
@@ -62,5 +60,7 @@ public static class DependencyInjection
         services.AddScoped<INotificationHandler<PagamentoRecusadoEvent>, MatriculaEventHandler>();
         services.AddScoped<IRequestHandler<CancelarMatriculaCommand, bool>, CancelarMatriaculaCommandHandler>();
         services.AddScoped<IRequestHandler<AtivarMatriculaCommand, bool>, AtivarMatriculaCommandHandler>();
+        services.AddScoped<IRequestHandler<ConluirAulaCommand, bool>, ConcluirAulaCommandHandler>();
+        services.AddScoped<IRequestHandler<ConcluirCursoCommand, bool>, ConcluirCursoCommandHandler>();
     }
 }

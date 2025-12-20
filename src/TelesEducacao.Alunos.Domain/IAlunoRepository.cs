@@ -15,4 +15,12 @@ public interface IAlunoRepository : IRepository<Aluno>
     Task<IEnumerable<Matricula>> ObterMatriculasPorAlunoIdAsync(Guid alunoId);
 
     Task AlterarStatusMatriculaAsync(Guid matriculaId, MatriculaStatus status);
+
+    Task ConcluirAula(Guid matriculaId, Guid aulaId);
+
+    Task<Matricula> ObterMatriculaPorId(Guid matriculaId);
+
+    Task<IEnumerable<AulaConluida>> ObterAulasConcluidasPorMatriculaId(Guid matriculaId);
+
+    Task<Guid?> AdicionarCertificadoAsync(Guid matriculaId);
 }
