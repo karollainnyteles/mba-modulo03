@@ -33,13 +33,13 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TelesEducacao.Alunos.Domain
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TelesEducacao.Alunos.Application", "src\TelesEducacao.Alunos.Application\TelesEducacao.Alunos.Application.csproj", "{5BBEC065-B050-4FE3-9C5A-14E2E15B65E8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TelesEducacao.Alunos.Data", "TelesEducacao.Aulas.Data\TelesEducacao.Alunos.Data.csproj", "{905C1E90-3319-45FD-AB9A-CF1AD940C1C6}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TelesEducacao.Pagamentos.AntiCorruption", "src\TelesEducacao.Pagamentos.AntiCorruption\TelesEducacao.Pagamentos.AntiCorruption.csproj", "{64668394-B61E-4815-8008-F7D03F353A18}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TelesEducacao.Pagamentos.Business", "src\TelesEducacao.Pagamentos.Business\TelesEducacao.Pagamentos.Business.csproj", "{44C11306-AB31-44B5-9BD1-484D75C2BD7A}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TelesEducacao.Pagamentos.Data", "src\TelesEducacao.Pagamentos.Data\TelesEducacao.Pagamentos.Data.csproj", "{BF4CA535-E689-4E2D-8C86-73D4565627CF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TelesEducacao.Alunos.Data", "src\TelesEducacao.Alunos.Data\TelesEducacao.Alunos.Data.csproj", "{EAA40982-B37C-14A0-0980-773C0BDC0567}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -79,10 +79,6 @@ Global
 		{5BBEC065-B050-4FE3-9C5A-14E2E15B65E8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5BBEC065-B050-4FE3-9C5A-14E2E15B65E8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5BBEC065-B050-4FE3-9C5A-14E2E15B65E8}.Release|Any CPU.Build.0 = Release|Any CPU
-		{905C1E90-3319-45FD-AB9A-CF1AD940C1C6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{905C1E90-3319-45FD-AB9A-CF1AD940C1C6}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{905C1E90-3319-45FD-AB9A-CF1AD940C1C6}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{905C1E90-3319-45FD-AB9A-CF1AD940C1C6}.Release|Any CPU.Build.0 = Release|Any CPU
 		{64668394-B61E-4815-8008-F7D03F353A18}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{64668394-B61E-4815-8008-F7D03F353A18}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{64668394-B61E-4815-8008-F7D03F353A18}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -95,6 +91,10 @@ Global
 		{BF4CA535-E689-4E2D-8C86-73D4565627CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BF4CA535-E689-4E2D-8C86-73D4565627CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BF4CA535-E689-4E2D-8C86-73D4565627CF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EAA40982-B37C-14A0-0980-773C0BDC0567}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EAA40982-B37C-14A0-0980-773C0BDC0567}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EAA40982-B37C-14A0-0980-773C0BDC0567}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EAA40982-B37C-14A0-0980-773C0BDC0567}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -113,10 +113,10 @@ Global
 		{D376EF6A-D56B-4C5C-9EBC-6461D9905F95} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
 		{4A7470C3-AAD2-4731-905C-535386C2AF32} = {47D0850C-E4D3-4DB7-B9BB-3EB00FFC3F61}
 		{5BBEC065-B050-4FE3-9C5A-14E2E15B65E8} = {47D0850C-E4D3-4DB7-B9BB-3EB00FFC3F61}
-		{905C1E90-3319-45FD-AB9A-CF1AD940C1C6} = {47D0850C-E4D3-4DB7-B9BB-3EB00FFC3F61}
 		{64668394-B61E-4815-8008-F7D03F353A18} = {D376EF6A-D56B-4C5C-9EBC-6461D9905F95}
 		{44C11306-AB31-44B5-9BD1-484D75C2BD7A} = {D376EF6A-D56B-4C5C-9EBC-6461D9905F95}
 		{BF4CA535-E689-4E2D-8C86-73D4565627CF} = {D376EF6A-D56B-4C5C-9EBC-6461D9905F95}
+		{EAA40982-B37C-14A0-0980-773C0BDC0567} = {47D0850C-E4D3-4DB7-B9BB-3EB00FFC3F61}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {FA81EC5F-F50E-4AE4-AC09-5F4ABAD77FEC}
