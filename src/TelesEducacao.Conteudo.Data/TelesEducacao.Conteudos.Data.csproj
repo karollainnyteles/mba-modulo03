@@ -20,7 +20,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\TelesEducacao.Catalogo.Domain\TelesEducacao.Conteudos.Domain.csproj" />
+    <ProjectReference Include="..\TelesEducacao.Conteudo.Domain\TelesEducacao.Conteudos.Domain.csproj" />
     <ProjectReference Include="..\TelesEducacao.Core\TelesEducacao.Core.csproj" />
   </ItemGroup>
 
