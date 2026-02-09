@@ -20,12 +20,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\building-blocks\TelesEducacao.Core\TelesEducacao.Core.csproj" />
     <ProjectReference Include="..\TelesEducacao.Alunos.Application\TelesEducacao.Alunos.Application.csproj" />
     <ProjectReference Include="..\TelesEducacao.Alunos.Data\TelesEducacao.Alunos.Data.csproj" />
     <ProjectReference Include="..\TelesEducacao.Conteudo.Application\TelesEducacao.Conteudos.Application.csproj" />
     <ProjectReference Include="..\TelesEducacao.Conteudo.Data\TelesEducacao.Conteudos.Data.csproj" />
     <ProjectReference Include="..\TelesEducacao.Conteudo.Domain\TelesEducacao.Conteudos.Domain.csproj" />
-    <ProjectReference Include="..\TelesEducacao.Core\TelesEducacao.Core.csproj" />
     <ProjectReference Include="..\TelesEducacao.Pagamentos.AntiCorruption\TelesEducacao.Pagamentos.AntiCorruption.csproj" />
     <ProjectReference Include="..\TelesEducacao.Pagamentos.Business\TelesEducacao.Pagamentos.Business.csproj" />
     <ProjectReference Include="..\TelesEducacao.Pagamentos.Data\TelesEducacao.Pagamentos.Data.csproj" />

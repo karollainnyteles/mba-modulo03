@@ -7,15 +7,15 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\TelesEducacao.Core\TelesEducacao.Core.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
     <Folder Include="Events\" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="mediatr" Version="13.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\building-blocks\TelesEducacao.Core\TelesEducacao.Core.csproj" />
   </ItemGroup>
 
 </Project>

@@ -20,7 +20,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <ProjectReference Include="..\TelesEducacao.Core\TelesEducacao.Core.csproj" />
+	  <ProjectReference Include="..\..\building-blocks\TelesEducacao.Core\TelesEducacao.Core.csproj" />
 	  <ProjectReference Include="..\TelesEducacao.Pagamentos.Business\TelesEducacao.Pagamentos.Business.csproj" />
 	</ItemGroup>
 
