@@ -7,8 +7,8 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\building-blocks\TelesEducacao.Core\TelesEducacao.Core.csproj" />
     <ProjectReference Include="..\TelesEducacao.Alunos.Domain\TelesEducacao.Alunos.Domain.csproj" />
-    <ProjectReference Include="..\TelesEducacao.Core\TelesEducacao.Core.csproj" />
   </ItemGroup>
 
 	<ItemGroup>
