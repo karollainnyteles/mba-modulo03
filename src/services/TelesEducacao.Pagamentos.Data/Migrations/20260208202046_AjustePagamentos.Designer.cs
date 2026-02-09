@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using TelesEducacao.Pagamentos.Data;
 
@@ -10,9 +11,11 @@ using TelesEducacao.Pagamentos.Data;
 namespace TelesEducacao.Pagamentos.Data.Migrations
 {
     [DbContext(typeof(PagamentosContext))]
-    partial class PagamentosContextModelSnapshot : ModelSnapshot
+    [Migration("20260208202046_AjustePagamentos")]
+    partial class AjustePagamentos
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "9.0.9");
