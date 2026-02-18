@@ -10,6 +10,7 @@ using TelesEducacao.Alunos.Application.AutoMapper;
 using TelesEducacao.Alunos.Application.Commands;
 using TelesEducacao.Alunos.Application.Queries;
 using TelesEducacao.Alunos.Data;
+using TelesEducacao.Alunos.Data.Configuration;
 using TelesEducacao.Alunos.Data.Repository;
 using TelesEducacao.Alunos.Domain;
 using TelesEducacao.Core.Communication.Mediator;
@@ -98,6 +99,7 @@ builder.Services.AddAuthentication(options =>
 });
 
 var app = builder.Build();
+app.Services.UseDbMigrationAlunosHelper();
 
 app.UseSwagger();
 app.UseSwaggerUI(options =>
